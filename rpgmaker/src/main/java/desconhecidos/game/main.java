@@ -1,72 +1,40 @@
 package desconhecidos.game;
-import java.io.IOException;
-
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.Reflection;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private Stage primaryStage;
-    private BorderPane rootLayout;
-
-    @Override
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("AddressApp");
-
-        initRootLayout();
-
-        showPersonOverview();
-    }
-
-    /*
-     * Inicializa o root layout (layout base).
-     */
-    public void initRootLayout() {
-        try {
-            // Carrega o root layout do arquivo fxml.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("teste.fxml"));
-            rootLayout = (BorderPane) loader.load();
-
-            // Mostra a scene (cena) contendo o root layout.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /** 
-      Mostra o person overview dentro do root layout.
-     */
-    public void showPersonOverview() {
-        try {
-            // Carrega o person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("teste.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
-
-            // Define o person overview dentro do root layout.
-            rootLayout.setCenter(personOverview);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Retorna o palco principal.
-     * @return
-     */
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void start(Stage palco) throws Exception {
+        final Effect r = new Reflection();
+        final VBox raiz = new VBox(30);
+        final HBox hbTopo = new HBox(5);
+        final TextField txtNome = new TextField();
+        final Button btnAcao = new Button("Enviar");
+        final Label lblMensagem = new Label();
+        raiz.setTranslateX(10);
+        raiz.setTranslateY(10);
+        lblMensagem.setText("Digite seu nome e clique no botão");
+        hbTopo.getChildren().addAll(txtNome, btnAcao);
+        raiz.getChildren().addAll(hbTopo, lblMensagem);
+        lblMensagem.setEffect(r);
+        Scene cena = new Scene(raiz, 250, 100);
+        palco.setTitle("Aplicação usando código Java");
+        palco.setScene(cena);
+        palco.show();
+
+        btnAcao.setOnAction(e -> lblMensagem.setText("Olá, " + txtNome.getText() + ", bem vindo!"));
     }
 }
