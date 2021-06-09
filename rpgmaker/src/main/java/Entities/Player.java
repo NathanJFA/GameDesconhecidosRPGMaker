@@ -41,4 +41,8 @@ public class Player extends Entity{
         }
         throw new Exception("Item nao presente no inventario");
     }
+
+    public LinkedList getInventario(){
+        return this.inventario;
+    }
 }
