@@ -40,6 +40,12 @@
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.5.1</version>
     </dependency>
+  
+    <dependency>
+      <groupId>com.truthbean</groupId>
+      <artifactId>debbie-javafx</artifactId>
+      <version>0.5.0-RELEASE</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

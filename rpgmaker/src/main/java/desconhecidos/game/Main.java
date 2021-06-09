@@ -1,5 +1,10 @@
 package desconhecidos.game;
+
+import com.truthbean.debbie.javafx.PrimaryStage;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,24 +22,14 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage palco) throws Exception {
-        final Effect r = new Reflection();
-        final VBox raiz = new VBox(30);
-        final HBox hbTopo = new HBox(5);
-        final TextField txtNome = new TextField();
-        final Button btnAcao = new Button("Enviar");
-        final Label lblMensagem = new Label();
-        raiz.setTranslateX(10);
-        raiz.setTranslateY(10);
-        lblMensagem.setText("Digite seu nome e clique no botão");
-        hbTopo.getChildren().addAll(txtNome, btnAcao);
-        raiz.getChildren().addAll(hbTopo, lblMensagem);
-        lblMensagem.setEffect(r);
-        Scene cena = new Scene(raiz, 250, 100);
-        palco.setTitle("Aplicação usando código Java");
-        palco.setScene(cena);
-        palco.show();
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("teste.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene tela = new Scene(root);
 
-        btnAcao.setOnAction(e -> lblMensagem.setText("Olá, " + txtNome.getText() + ", bem vindo!"));
+
+        primaryStage.setScene(tela);
+        primaryStage.show();
+
     }
 }
