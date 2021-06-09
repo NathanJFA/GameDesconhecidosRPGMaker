@@ -28,7 +28,7 @@ public class Aventura {
 
     }
     public Historia getHistoria(){
-            return historia;
+        return historia;
     }
     public String getNome(){
         return this.nome;

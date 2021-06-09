@@ -25,12 +25,12 @@ public class ItemEquipavel implements Item {
     }
     @Override
     public void setEquipavel(boolean newTipoItem) {
-        // TODO Auto-generated method stub
+        
         
     }
     @Override
     public int getHabilidade() {
-        // TODO Auto-generated method stub
+        
         return 0;
     }
 
