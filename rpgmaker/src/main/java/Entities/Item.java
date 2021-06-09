@@ -1,10 +1,34 @@
 package Entities;
 
-public interface Item {
+public class Item{
+    private String nome;
+    private int vida;
+    private int forca;
+    private int destreza;
+    private boolean some;
+
+    public Item(String nome, int vida, int forca, int destreza, boolean some){
+        this.nome = nome;
+        this.vida = vida;
+        this.forca = forca;
+        this.destreza = destreza;
+        this.some = some;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public boolean getSome() {
+        return this.some;
+    }
+
+    public void setSome(boolean newSome) {
+       this.some = newSome;
+    }
     
-    public String getNome();
-    public boolean getEquipavel();
-    public void setEquipavel(boolean newTipoItem);
-    public int getHabilidade();/*Tem que pensar de uma maneira de implemntar esse
-    metodo de forma que ele so retorne a habilidade que ele vai alterar*/
+    public int getHabilidade() {
+        return this.vida + this.forca + this.destreza;
+    }
+    
 }

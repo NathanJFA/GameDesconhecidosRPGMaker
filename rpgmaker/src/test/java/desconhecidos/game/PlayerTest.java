@@ -24,15 +24,5 @@ class PlayerTest {
         assertEquals(0, player1.getInventario().size());
     }
 
-
-
-
-
-
-
-
-
-
-    //emmanuel ´lindão
     
 }
