@@ -6,9 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch App",
+            "name": "Launch Main",
             "request": "launch",
-            "mainClass": "desconhecidos.game.App",
+            "mainClass": "desconhecidos.game.Main",
             "projectName": "rpgmaker"
         },
         {
@@ -19,7 +19,7 @@
         },
         {
             "type": "java",
-            "name": "Launch App",
+            "name": "Launch Main",
             "request": "launch",
             "vmArgs": "--module-path C:/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "desconhecidos.game.Main",
