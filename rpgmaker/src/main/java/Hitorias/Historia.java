@@ -1,7 +1,9 @@
-package Entities;
+package Hitorias;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import Entities.Possibilidades;
 
 public class Historia {
     private List<Possibilidades> possibilidades = new LinkedList<>();

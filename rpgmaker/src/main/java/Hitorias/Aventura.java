@@ -1,6 +1,9 @@
-package Entities;
+package Hitorias;
 
 import java.util.HashMap;
+
+import Entities.Entity;
+import Entities.Item;
 
 public class Aventura {
     private String nome;
