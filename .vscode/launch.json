@@ -8,11 +8,11 @@
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
-            "vmArgs": "--module-path C:/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            //"vmArgs": "--module-path /home/nathanjfa/Documentos/ProjetoSMI/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2L/lib --add-modules javafx.controls,javafx.fxml",
+            //"vmArgs": "--module-path C:/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path /home/nathanjfa/Documentos/ProjetoSMI/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2L/lib --add-modules javafx.controls,javafx.fxml",
             //"vmArgs": "--module-path C:/Users/alves/Documents/GitHub/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "desconhecidos.game.Main",
             "projectName": "rpgmaker"
-        },
+        }
     ]
 }

@@ -1,4 +1,4 @@
-package Hitorias;
+package Historias;
 
 import java.util.LinkedList;
 import java.util.List;
