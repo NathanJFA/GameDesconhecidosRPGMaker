@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="1084.0" fitWidth="1467.0" layoutX="-6.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/WhatsApp%20Image%202021-06-08%20at%2023.41.07.jpeg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <Text layoutX="261.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione a Aventura">
+         <font>
+            <Font name="Rockwell Bold" size="96.0" />
+         </font>
+      </Text>
+      <Text layoutX="195.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salvação de Tarsbak">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ButtonBar layoutX="199.0" layoutY="303.0" />
+      <ImageView accessibleRole="BUTTON" cache="true" fitHeight="100.0" fitWidth="300.0" layoutX="199.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="635.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="1041.0" AnchorPane.topAnchor="289.0">
+         <image>
+            <Image url="@../../../../../../../../Downloads/WhatsApp%20Image%202021-06-08%20at%2023.41.07%20(1).jpeg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+      <Text layoutX="445.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Após entregarem a espada ao prefeito Orjam de Prado Verde, &#10;vocês gozam de status de heróis na aldeia. Vocês ganharam &#10;1 semana de estadia na estalagem e comem na casa do prefeito. &#10;Após 2 dias de estadia, chega na cidade um comboio com 1 carroça e &#10;1 homem. Mercadores em viagem, procuraram com o prefeito se ele &#10;conhecia alguém.&#10;que pudesse fazer a escolta.&#10;" wrappingWidth="2218.032958984375">
+         <font>
+            <Font name="Perpetua Titling MT Bold" size="22.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
