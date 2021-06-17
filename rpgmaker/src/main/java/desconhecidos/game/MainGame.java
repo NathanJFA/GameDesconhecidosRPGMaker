@@ -60,7 +60,7 @@ public class MainGame extends Application{
     @FXML
     void createAdventure(ActionEvent event) throws IOException{
         //System.out.println("Criar");
-        CadastroController cadastroGame = new CadastroController(this.stage);
+        //CadastroController cadastroGame = new CadastroController(this.stage);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Telas/FrameCadastro.fxml"));
         Parent root = fxmlLoader.load();
         Scene tela = new Scene(root);

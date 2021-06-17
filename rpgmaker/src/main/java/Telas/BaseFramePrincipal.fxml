@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.MainGame">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.MainGame">
    <children>
+      <ImageView fitHeight="660.0" fitWidth="1011.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/mata.jpeg" />
+         </image>
+      </ImageView>
       <Button fx:id="btnCreateAdventure" layoutX="417.0" layoutY="253.0" mnemonicParsing="false" onAction="#createAdventure" text="CRIAR" />
-      <Button fx:id="btnLibrarieGames" layoutX="398.0" layoutY="330.0" mnemonicParsing="false" onAction="#librarieGames" text="BIBLIOTECA" />
+      <Button fx:id="btnLibrarieGames" layoutX="403.0" layoutY="318.0" mnemonicParsing="false" onAction="#librarieGames" text="BIBLIOTECA" />
       <Button fx:id="btnExit" layoutX="422.0" layoutY="395.0" mnemonicParsing="false" onAction="#exit" text="SAIR" />
    </children>
 </AnchorPane>
