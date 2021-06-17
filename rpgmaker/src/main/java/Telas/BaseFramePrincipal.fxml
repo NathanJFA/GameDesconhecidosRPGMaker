@@ -12,8 +12,8 @@
             <Image url="@../img/mata.jpeg" />
          </image>
       </ImageView>
-      <Button fx:id="btnCreateAdventure" layoutX="417.0" layoutY="253.0" mnemonicParsing="false" onAction="#createAdventure" text="CRIAR" />
-      <Button fx:id="btnLibrarieGames" layoutX="403.0" layoutY="318.0" mnemonicParsing="false" onAction="#librarieGames" text="BIBLIOTECA" />
-      <Button fx:id="btnExit" layoutX="422.0" layoutY="395.0" mnemonicParsing="false" onAction="#exit" text="SAIR" />
+      <Button fx:id="btnCreateAdventure" layoutX="179.0" layoutY="246.0" mnemonicParsing="false" onAction="#createAdventure" text="CRIAR" />
+      <Button fx:id="btnLibrarieGames" layoutX="391.0" layoutY="246.0" mnemonicParsing="false" onAction="#librarieGames" text="BIBLIOTECA" />
+      <Button fx:id="btnExit" layoutX="718.0" layoutY="246.0" mnemonicParsing="false" onAction="#exit" text="SAIR" />
    </children>
 </AnchorPane>
