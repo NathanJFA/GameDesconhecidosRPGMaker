@@ -1,55 +1,62 @@
 package Entities;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Entity {
-    private String nome;
-    private int vida;
-    private int forca;
-    private int destreza;
+    private StringProperty nome;
+    private IntegerProperty vida;
+    private IntegerProperty forca;
+    private IntegerProperty destreza;
 
     public Entity(String nome) {
-        this.nome = nome;
-        this.vida = 1;
-        this.forca = 0;
-        this.destreza = 0;
+        this.nome = new SimpleStringProperty(nome);
+        this.vida = new SimpleIntegerProperty(1);
+        this.forca = new SimpleIntegerProperty(0);
+        this.destreza = new SimpleIntegerProperty(0);
     }
 
     public Entity(String nome, int vida, int forca, int destreza) {
-        this.nome = nome;
-        this.vida = vida;
-        this.forca = forca;
-        this.destreza = destreza;
+        this.nome = new SimpleStringProperty(nome);
+        this.vida = new SimpleIntegerProperty(vida);
+        this.forca = new SimpleIntegerProperty(forca);
+        this.destreza = new SimpleIntegerProperty(destreza);
     }
 
     public String getNome() {
-        return this.nome;
+        return nome.get();
     }
 
     public void setNome(String newNome) {
-        this.nome = newNome;
+        this.nome = new SimpleStringProperty(newNome);
     }
 
     public int getVida() {
-        return this.vida;
+        return this.vida.get();
     }
 
     public int getForca() {
-        return this.forca;
+        return this.forca.get();
     }
 
     public void setForca(int newForca) {
-        this.forca = newForca;
+        this.forca = new SimpleIntegerProperty(newForca);
     }
 
     public int getDestreza() {
-        return this.destreza;
+        return this.destreza.get();
     }
 
     public void setDestreza(int newDestreza) {
-        this.destreza = newDestreza;
+        this.destreza = new SimpleIntegerProperty(newDestreza);
     }
 
     public int danoRecebido(int dano) {
-        return this.vida = -dano;
+        vida.set(this.vida.get() - dano);
+        return vida.get();
+        
 
     }
 

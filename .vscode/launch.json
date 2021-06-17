@@ -6,12 +6,18 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Main",
+            "name": "Launch MainGame",
+            "request": "launch",
+            "vmArgs": "--module-path /home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2LINUX/lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "desconhecidos.game.MainGame",
+            "projectName": "rpgmaker"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainGame",
             "request": "launch",
             "vmArgs": "--module-path /home/nathanjfa/Downloads/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            //"vmArgs": "--module-path C:/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            //"vmArgs": "--module-path C:/Users/alves/Documents/GitHub/GameDesconhecidosRPGMaker/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "desconhecidos.game.Main",
+            "mainClass": "desconhecidos.game.MainGame",
             "projectName": "rpgmaker"
         }
     ]
