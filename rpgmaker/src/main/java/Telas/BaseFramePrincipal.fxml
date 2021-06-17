@@ -4,6 +4,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.MainGame">
    <children>
@@ -12,8 +14,24 @@
             <Image url="@../img/mata.jpeg" />
          </image>
       </ImageView>
-      <Button fx:id="btnCreateAdventure" layoutX="179.0" layoutY="246.0" mnemonicParsing="false" onAction="#createAdventure" text="CRIAR" />
-      <Button fx:id="btnLibrarieGames" layoutX="391.0" layoutY="246.0" mnemonicParsing="false" onAction="#librarieGames" text="BIBLIOTECA" />
-      <Button fx:id="btnExit" layoutX="718.0" layoutY="246.0" mnemonicParsing="false" onAction="#exit" text="SAIR" />
+      <Text layoutX="172.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-opacity: 70%;" text="RPG Maker" textAlignment="CENTER" wrappingWidth="535.13671875">
+         <font>
+            <Font name="Franklin Gothic Medium Cond" size="72.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnCreateAdventure" layoutX="216.0" layoutY="249.0" mnemonicParsing="false" onAction="#createAdventure" prefHeight="110.0" prefWidth="447.0" style="-fx-background-color: 0000; -fx-opacity: 80%;" text="Criar Aventura" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Medium Cond" size="64.0" />
+         </font></Button>
+      <Button fx:id="btnCreateAdventure1" layoutX="262.0" layoutY="368.0" mnemonicParsing="false" onAction="#createAdventure" prefHeight="104.0" prefWidth="337.0" style="-fx-background-color: 0000; -fx-opacity: 80%;" text="Biblioteca" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Medium Cond" size="64.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCreateAdventure11" layoutX="262.0" layoutY="487.0" mnemonicParsing="false" onAction="#createAdventure" prefHeight="104.0" prefWidth="337.0" style="-fx-background-color: 0000; -fx-opacity: 85%;" text="Sair" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Medium Cond" size="64.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
