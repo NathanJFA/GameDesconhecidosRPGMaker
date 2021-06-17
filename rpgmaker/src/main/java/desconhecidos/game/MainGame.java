@@ -1,6 +1,7 @@
 package desconhecidos.game;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Entities.Entity;
 import javafx.application.Application;
@@ -16,12 +17,30 @@ import javafx.stage.Stage;
 
 public class MainGame extends Application{
 
-    private Stage stage;
+
+    @FXML
+    private Button btnCreateAdventure;
+
+    @FXML
+    private Button btnBiblioteca;
+
+    @FXML
+    private Button btnSair;
+    private static Stage stage; //PALCO
+
+    /**
+     *  JANELAS QUE SERÃO REFERENCIADAS NO STAGE (PALCO) DENTRO DO SWITCH
+     */
+    public static Scene cadastroScene;
+    public static Scene mainScene; 
+    public static Scene bibliotecaScene; 
+    public static Scene possibilidadeScene;
+
+    CadastroController cadastroC = new CadastroController();
+    BibliotecaController bibliotecaC = new BibliotecaController();
     
     private ObservableList<Entity> entidades = FXCollections.observableArrayList();
     
-    
-
     public MainGame(){
         entidades.add(new Entity("Super Homem", 1,1,1));
     }
@@ -30,55 +49,87 @@ public class MainGame extends Application{
         return entidades;
     }
     
-
-    
     public static void main(String[] args) {
         launch(args);
     }
     @Override
-    public void start(Stage stageIn) throws Exception {
-        this.stage = stageIn;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Telas/BaseFramePrincipal.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene tela = new Scene(root);
+    public void start(Stage stageIn) throws IOException {
+        stage = stageIn;
+        Parent fxmlMain = FXMLLoader.load(getClass().getResource("../../Telas/BaseFramePrincipal.fxml"));
+        mainScene = new Scene(fxmlMain); 
+        Parent fxmlCadastro = FXMLLoader.load(getClass().getResource("../../Telas/FrameCadastro.fxml"));
+        cadastroScene = new Scene(fxmlCadastro);
+        
+        Parent fxmlPossibilidades = FXMLLoader.load(getClass().getResource("../../Telas/frameCadastroAv_Possibilidades.fxml"));
+        possibilidadeScene = new Scene(fxmlPossibilidades);
+        
+        Parent fxmlBiblioteca = FXMLLoader.load(getClass().getResource("../../Telas/FrameSelecioneAventura.fxml"));
+        bibliotecaScene = new Scene(fxmlBiblioteca);
 
         stage.setTitle("Game RPG Maker v1.0");
-
-        stage.setScene(tela);
+        stage.setScene(mainScene);
         stage.show();
     }
 
-    @FXML
-    private Button btnCreateAdventure;
+    public static void changeScreen(String src, Object userData){
+        switch(src){
+            case "main":
+                stage.setScene(mainScene);
+                notifyAllListeners("main", userData);
+                break;
+            case "cadastro":
+                stage.setScene(cadastroScene);
+                notifyAllListeners("cadastro", userData);
+                break;
+            case "biblioteca":
+                stage.setScene(bibliotecaScene);
+                notifyAllListeners("biblioteca", userData);
+                break;
+            case "possibilidades":
+                stage.setScene(possibilidadeScene);
+                notifyAllListeners("possibilidades", userData);
+                break;
+        }
 
-    @FXML
-    private Button btnLibrarieGames;
-
-    @FXML
-    private Button btnExit;
-
-    @FXML
-    void createAdventure(ActionEvent event) throws IOException{
-        //System.out.println("Criar");
-        //CadastroController cadastroGame = new CadastroController(this.stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Telas/FrameCadastro.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene tela = new Scene(root);
-        
-        //this.stage.setScene(tela);
-        
+    }
+    public static void changeScreen(String src){
+        changeScreen(src, null);
+    }
+    public Stage getStage(){
+        return this.stage;
     }
 
+    @FXML
+    void createAdventure(ActionEvent event) {
+        cadastroC.setMainGame(this);
+        changeScreen("cadastro");  
+    }
+    @FXML
+    void bibliotecaGames(ActionEvent event) {
+        bibliotecaC.setMainGame(this);
+        changeScreen("biblioteca");
+    }
     @FXML
     void exit(ActionEvent event) {
-        System.out.println("Sair");
+        stage.close();
     }
-    
+    //---------------------------------------------------
 
-    @FXML
-    void librarieGames(ActionEvent event) {
-        System.out.println("Biblioteca");
+    private static ArrayList<OnChangeScreen> listeners = new ArrayList<>();
 
+    public static interface OnChangeScreen{
+        void onScreenChanged(String newScreen, Object userData);
+    }
+
+    public static void addOnChangeScreenListener(OnChangeScreen newListeners){
+        listeners.add(newListeners);
+    }
+    public static void notifyAllListeners(String newScreen, Object userData){
+        for(OnChangeScreen l : listeners){
+            l.onScreenChanged(newScreen, userData);
+
+
+        }
     }
             /*
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Telas/FrameCadastro.fxml"));
@@ -98,7 +149,7 @@ public class MainGame extends Application{
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("AddressApp");
-
+@../img/ceu.jpe@../img/ceu.jpe'
         initRootLayout();
 
         showPersonOverview();
