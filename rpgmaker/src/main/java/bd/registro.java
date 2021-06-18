@@ -2,10 +2,15 @@ package bd;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
 public class registro {
+    
+    private File FILE_ENTITYS;
+    private File FILE_AVENTURAS;
+    private File FILE_ITENS;
     
     public boolean gravarDados(){
 

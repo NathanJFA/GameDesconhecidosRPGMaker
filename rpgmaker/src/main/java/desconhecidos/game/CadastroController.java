@@ -61,7 +61,6 @@ public class CadastroController {
     
     @FXML
     private void initialize() throws IOException{  
-        System.out.println("teste");
         MainGame.addOnChangeScreenListener(new MainGame.OnChangeScreen(){
             @Override
             public void onScreenChanged(String newScreen, Object userData){
@@ -96,7 +95,7 @@ public class CadastroController {
             newAventura = new Aventura(textNameAdventure.getText(), textCategorAdventure.getText(), textObjetive.getText(), textPersonMain.getText(), textAmbiente.getText(), textDescription.getText());
             this.aventuras.put(newAventura.getNome(), newAventura);
             System.out.println(newAventura.toString());
-            changeScreen("possibilidades", aventuras);
+            changeScreen("possibilidades", newAventura);
         }else{
             System.out.println("Algo precisa ser revisado...");
         }

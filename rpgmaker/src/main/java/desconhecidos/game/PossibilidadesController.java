@@ -1,16 +1,34 @@
 
 package desconhecidos.game;
 
+import java.util.ArrayList;
+
+import Historia.Aventura;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldListCell;
 
 public class PossibilidadesController {
 
     private static MainGame mainGame;
+    Aventura newAventura;
 
     @FXML
     private Button btnPrevious;
+
+    @FXML 
+    private TextField textDescricao;
+
+    @FXML
+    private TextField textOp1;
+
+    @FXML
+    private TextField textOp2;
+
+    @FXML
+    private TextField textOp3;
 
     @FXML 
     protected void initialize(){
@@ -19,7 +37,8 @@ public class PossibilidadesController {
             public void onScreenChanged(String newScreen, Object userData){
                 if(newScreen.equals("possibilidades")){
                     System.out.println("Entrando no Frame Possibilidades...");
-                    //AQUI DEVE SER IMPLEMENTADO A INTERAÇÃO COM A NOVA TELA    
+                    //AQUI DEVE SER IMPLEMENTADO A INTERAÇÃO COM A NOVA TELA 
+                    newAventura = (Aventura) userData; 
                 }
             }
         });

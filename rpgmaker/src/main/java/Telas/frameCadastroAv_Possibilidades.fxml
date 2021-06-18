@@ -39,10 +39,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextArea layoutX="242.0" layoutY="99.0" prefHeight="87.0" prefWidth="394.0" />
-      <TextArea layoutX="242.0" layoutY="220.0" prefHeight="52.0" prefWidth="394.0" />
-      <TextArea layoutX="242.0" layoutY="304.0" prefHeight="52.0" prefWidth="394.0" />
-      <TextArea layoutX="242.0" layoutY="380.0" prefHeight="52.0" prefWidth="394.0" />
+      <TextArea fx:id="textDescricao" layoutX="242.0" layoutY="99.0" prefHeight="87.0" prefWidth="394.0" />
+      <TextArea fx:id="textOp1" layoutX="242.0" layoutY="220.0" prefHeight="52.0" prefWidth="394.0" />
+      <TextArea fx:id="textOp2" layoutX="242.0" layoutY="304.0" prefHeight="52.0" prefWidth="394.0" />
+      <TextArea fx:id="textOp3" layoutX="242.0" layoutY="380.0" prefHeight="52.0" prefWidth="394.0" />
       <Button layoutX="374.0" layoutY="493.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="130.0" text="Finalizar" />
       <Button fx:id="btnPrevious" layoutX="93.0" layoutY="541.0" mnemonicParsing="false" onAction="#previousFrame" text="Voltar (TESTE)" />
    </children>
