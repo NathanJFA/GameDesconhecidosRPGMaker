@@ -3,7 +3,10 @@ package desconhecidos.game;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import Entities.Entity;
+import bd.connMysql;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +32,11 @@ public class MainGame extends Application{
     private static Stage stage; //PALCO
 
     /**
+     * ESTUDANDO A PLATAFORMA P INTRODUZIR BANCO DE DADOS
+     * connMysql bd = new connMysql();
+     * /
+
+    /**
      *  JANELAS QUE SERÃO REFERENCIADAS NO STAGE (PALCO) DENTRO DO SWITCH
      */
     public static Scene cadastroScene;
@@ -43,6 +51,11 @@ public class MainGame extends Application{
     
     public MainGame(){
         entidades.add(new Entity("Super Homem", 1,1,1));
+        /**
+         * TESTE DE CONEXÃO
+         * connMysql.getConnection();
+         * JOptionPane.showMessageDialog(null, connMysql.statusConection());
+        */  
     }
 
     public ObservableList<Entity> getEntidades(){
@@ -59,10 +72,8 @@ public class MainGame extends Application{
         mainScene = new Scene(fxmlMain); 
         Parent fxmlCadastro = FXMLLoader.load(getClass().getResource("../../Telas/FrameCadastro.fxml"));
         cadastroScene = new Scene(fxmlCadastro);
-        
         Parent fxmlPossibilidades = FXMLLoader.load(getClass().getResource("../../Telas/frameCadastroAv_Possibilidades.fxml"));
         possibilidadeScene = new Scene(fxmlPossibilidades);
-        
         Parent fxmlBiblioteca = FXMLLoader.load(getClass().getResource("../../Telas/FrameSelecioneAventura.fxml"));
         bibliotecaScene = new Scene(fxmlBiblioteca);
 
@@ -113,18 +124,22 @@ public class MainGame extends Application{
     void exit(ActionEvent event) {
         stage.close();
     }
-    //---------------------------------------------------
 
-    private static ArrayList<OnChangeScreen> listeners = new ArrayList<>();
+    //------------------------------------------------------------------------
+
+    private static ArrayList<OnChangeScreen> listeners = new ArrayList<OnChangeScreen>();
+
 
     public static interface OnChangeScreen{
-        void onScreenChanged(String newScreen, Object userData);
+        public void onScreenChanged(String newScreen, Object userData);
     }
 
-    public static void addOnChangeScreenListener(OnChangeScreen newListeners){
-        listeners.add(newListeners);
+    public static void addOnChangeScreenListener(OnChangeScreen newListener){
+        listeners.add(newListener);
+        System.out.println("chegou até aqui");
     }
     public static void notifyAllListeners(String newScreen, Object userData){
+        //System.out.println(listeners.size());
         for(OnChangeScreen l : listeners){
             l.onScreenChanged(newScreen, userData);
 

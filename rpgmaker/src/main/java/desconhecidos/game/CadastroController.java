@@ -1,7 +1,12 @@
 package desconhecidos.game;
 
 import java.io.IOException;
+import java.util.HashMap;
 
+import javax.swing.JOptionPane;
+
+import Historia.Aventura;
+import Historia.Historia;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,22 +50,33 @@ public class CadastroController {
 
     private static Stage stage;
 
-    //CENAS BASE - REFATORAR
-    Scene previousScene;
-    Scene nextScene;
+    private Aventura newAventura;
 
+    private HashMap<String, Aventura> aventuras = new HashMap<>();
 
     public CadastroController(){
+        
         //TODO
     }
     
     @FXML
-    private void inicialize() throws IOException{        
+    private void initialize() throws IOException{  
+        System.out.println("teste");
+        MainGame.addOnChangeScreenListener(new MainGame.OnChangeScreen(){
+            @Override
+            public void onScreenChanged(String newScreen, Object userData){
+                if(newScreen.equals("cadastro")){
+                    System.out.println("Entrando no Frame Cadastro...");
+                    //AQUI DEVE SER IMPLEMENTADO A INTERAÇÃO COM A NOVA TELA
+                }
+            }
+        });
+    }      
         /*Inicializa a tablea de pessoa com duas colunas.
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
         */
-    }
+    
     public void setMainGame(MainGame mainGame){
         this.mainGame = mainGame;
         stage = mainGame.getStage();
@@ -76,10 +92,24 @@ public class CadastroController {
     }
     @FXML
     void nextFrame(ActionEvent event){
-        changeScreen("possibilidades");
+        if(!(textNameAdventure.getText().isEmpty() || textCategorAdventure.getText().isEmpty() || textObjetive.getText().isEmpty() || textPersonMain.getText().isEmpty() || textAmbiente.getText().isEmpty() || textCLimax.getText().isEmpty() || textDescription.getText().isEmpty())){
+            newAventura = new Aventura(textNameAdventure.getText(), textCategorAdventure.getText(), textObjetive.getText(), textPersonMain.getText(), textAmbiente.getText(), textDescription.getText());
+            this.aventuras.put(newAventura.getNome(), newAventura);
+            System.out.println(newAventura.toString());
+            changeScreen("possibilidades", aventuras);
+        }else{
+            System.out.println("Algo precisa ser revisado...");
+        }
+    }
+    private void changeScreen(String scene, Object userData){
+        if(userData == null){
+            mainGame.changeScreen(scene);
+        }else{
+            mainGame.changeScreen(scene, userData);
+        }
+        
     }
     private void changeScreen(String scene){
-        mainGame.changeScreen(scene);
+        mainGame.changeScreen(scene, null);
     }
-
 }

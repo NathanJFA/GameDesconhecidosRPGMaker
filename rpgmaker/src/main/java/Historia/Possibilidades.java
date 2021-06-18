@@ -1,4 +1,4 @@
-package Entities;
+package Historia;
 
 public class Possibilidades {
     private String mensagem;

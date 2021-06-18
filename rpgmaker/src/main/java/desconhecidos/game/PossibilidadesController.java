@@ -13,12 +13,13 @@ public class PossibilidadesController {
     private Button btnPrevious;
 
     @FXML 
-    protected void inictialize(){
+    protected void initialize(){
         MainGame.addOnChangeScreenListener(new MainGame.OnChangeScreen(){
             @Override
             public void onScreenChanged(String newScreen, Object userData){
                 if(newScreen.equals("possibilidades")){
-                    //TRATANDO O AVISO
+                    System.out.println("Entrando no Frame Possibilidades...");
+                    //AQUI DEVE SER IMPLEMENTADO A INTERAÇÃO COM A NOVA TELA    
                 }
             }
         });

@@ -56,8 +56,6 @@ public class Entity {
     public int danoRecebido(int dano) {
         vida.set(this.vida.get() - dano);
         return vida.get();
-        
-
     }
-
+ 
 }
