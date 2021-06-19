@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class Possibilidade {
     private String Id;
     private String mensagem,msgOp1,msgOp2,msgOp3;
-    private Possibilidade possibilidade1, possibilidade2, possibilidade3;
+    //private Possibilidade possibilidade1, possibilidade2, possibilidade3;
 
 
     public Possibilidade(String mensagens){
@@ -39,6 +39,10 @@ public class Possibilidade {
     public void setMsgOp3(String msg){
         this.msgOp3 = msg;
     }
+
+
+
+    /*
     public Possibilidade getPossibilidade1(){
         return possibilidade1;
     }
@@ -48,14 +52,16 @@ public class Possibilidade {
     public Possibilidade getPossibilidade3(){
         return possibilidade3;
     }
-    public void setPossibilidade1(Possibilidade possibilidade){
-        this.possibilidade1 = possibilidade;
+    public void setPossibilidade1(){
+        this.possibilidade1 = new Possibilidade();
     }
-    public void setPossibilidade2(Possibilidade possibilidade){
-        this.possibilidade2 = possibilidade;
+    public void setPossibilidade2(){
+        this.possibilidade2 = new Possibilidade();
     }
-    public void setPossibilidade3(Possibilidade possibilidade){
-        this.possibilidade3 = possibilidade;
-    }
+    public void setPossibilidade3(){
+        this.possibilidade3 = new Possibilidade();
+    }    
+    */
+    
 }
 
