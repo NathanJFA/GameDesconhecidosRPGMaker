@@ -3,6 +3,7 @@ package Historia;
 import org.junit.jupiter.api.Test;
 
 public class Possibilidade {
+    private String apontador;
     private String id;
     private String mensagem,msgOp1,msgOp2,msgOp3;
     private Possibilidade possibilidade1, possibilidade2, possibilidade3;
@@ -15,6 +16,12 @@ public class Possibilidade {
     public Possibilidade(){
 
     }
+    public String getApontador(){
+        return this.apontador;
+    }
+    public void setApontador(String apontador){
+        this.apontador = apontador;
+    }
 
     public String getId(){
         return this.id;
@@ -22,10 +29,10 @@ public class Possibilidade {
     public void setId(String id){
         this.id = id;
     }
-    public String getMensagem(){
+    public String getDescricao(){
         return mensagem;
     }
-    public void setMesagem(String msg){
+    public void setDescricao(String msg){
         this.mensagem = msg;
     } 
 
