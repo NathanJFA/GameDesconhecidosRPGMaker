@@ -4,6 +4,8 @@ package desconhecidos.game;
 import java.util.ArrayList;
 
 import Historia.Aventura;
+import Historia.Historia;
+import Historia.Possibilidade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
 
 public class PossibilidadesController {
+
+    Historia historia = new Historia();
+    
 
     private static MainGame mainGame;
     Aventura newAventura;
@@ -42,6 +47,24 @@ public class PossibilidadesController {
                 }
             }
         });
+    }
+    @FXML
+    void concluirPossibilidade(ActionEvent event){
+        if(!(textDescricao.getText().isEmpty() || textOp1.getText().isEmpty() || textOp2.getText().isEmpty() || textOp3.getText().isEmpty())){
+            System.out.println("Preencher campos para continuar..");
+            if(Historia.possibilidades.size() == 0){
+                Possibilidade newP = new Possibilidade("0", textDescricao.getText());
+                Historia.addPossibilidade(newP.getId(), newP);
+            }else{
+                //DEFINIR APONTADOR
+                Possibilidade newP = new Possibilidade(null, textDescricao.getText());
+                Historia.updateId(newP);
+                newP.setMsgOp1(textOp1.getText());
+                newP.setMsgOp2(textOp2.getText());
+                newP.setMsgOp3(textOp3.getText());
+                Historia.addPossibilidade(newP.getId(), newP);
+            }
+        }
     }
 
     @FXML

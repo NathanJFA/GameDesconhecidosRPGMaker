@@ -24,6 +24,7 @@ class PlayerTest {
         assertEquals(10, player1.getDestreza());
         assertEquals(0, player1.getInventario().size());
     }
+
     @Test
     public void test(){
         Possibilidade p1 = new Possibilidade();
@@ -32,6 +33,12 @@ class PlayerTest {
 
         System.out.println(p1.getOpcao1().getMensagem());
         System.out.println(p1.getOpcao1().getOpcao1().getMensagem());
+    }
+    @Test
+    public void testeFor(){
+        for(int i = 0; i < 5; i++){
+            System.out.println(i);
+        }
     }
     
 }
