@@ -50,14 +50,6 @@ public class Possibilidade {
         opcao3 = new Possibilidade(msg);
     }
 
-    @Test
-    public void test(){
-        Possibilidade p1 = new Possibilidade();
-        p1.setOpcao1("msg da opcao 1 do p1");
-        p1.getOpcao1().setOpcao1("msg da opcao 1 do opcao1");
-
-        System.out.println(p1.getOpcao1().getMensagem());
-        System.out.println(p1.getOpcao1().getOpcao1().getMensagem());
-    }
+    
 
 }
