@@ -27,17 +27,19 @@ class PlayerTest {
 
     @Test
     public void test(){
-        Possibilidade p1 = new Possibilidade();
-        p1.setOpcao1("msg da opcao 1 do p1");
-        p1.getOpcao1().setOpcao1("msg da opcao 1 do opcao1");
+        Possibilidade p1 = new Possibilidade("Escolha uma opcao");
+        p1.setId("0");
+        p1.setMsgOp1("1");
+        p1.setMsgOp2("2");
+        p1.setMsgOp3("3");
 
-        System.out.println(p1.getOpcao1().getMensagem());
-        System.out.println(p1.getOpcao1().getOpcao1().getMensagem());
     }
     @Test
     public void testeFor(){
         for(int i = 0; i < 5; i++){
-            System.out.println(i);
+            System.out.println("aaa"+i);
+            System.out.println(++i);
+            System.out.println(i++);
         }
     }
     
