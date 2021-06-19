@@ -39,7 +39,7 @@ public class PossibilidadesController {
 
     @FXML
     private TextArea textOp3;
-
+ 
     @FXML
     private Label labelApontador;
 
