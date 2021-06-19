@@ -61,13 +61,13 @@
             <ScrollBar layoutX="180.0" orientation="VERTICAL" prefHeight="489.0" prefWidth="19.0" />
          </children>
       </AnchorPane>
-      <TextField layoutX="756.0" layoutY="87.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tfPesquisaId" layoutX="756.0" layoutY="87.0" prefHeight="25.0" prefWidth="44.0" />
       <Button layoutX="806.0" layoutY="83.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="54.0" text="OK" />
       <Label layoutX="71.0" layoutY="140.0" prefHeight="41.0" prefWidth="105.0" text="Apontador:">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="186.0" layoutY="131.0" prefHeight="59.0" prefWidth="355.0" text="correr  pra se salvar!" textFill="#070606" />
+      <Label fx:id="labelApontador" layoutX="186.0" layoutY="131.0" prefHeight="59.0" prefWidth="355.0" text="correr  pra se salvar!" textFill="#070606" />
    </children>
 </AnchorPane>
