@@ -63,7 +63,7 @@ public class PossibilidadesController {
     @FXML
     void concluirPossibilidade(ActionEvent event){
         if(!(textDescricao.getText().isEmpty() || textOp1.getText().isEmpty() || textOp2.getText().isEmpty() || textOp3.getText().isEmpty())){
-            System.out.println("Preencher campos para continuar..");
+            
             if(Aventura.possibilidades.size() == 0){
                 newNodeP = new Possibilidade(textDescricao.getText());
                 newNodeP.setApontador(null);
@@ -93,6 +93,8 @@ public class PossibilidadesController {
                 possibilidadesPreDefinidas.add(new PrePossibilidade (newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
                 }
             }
+        }else{
+            System.out.println("Preencher campos para continuar..");
         }
     }
 
