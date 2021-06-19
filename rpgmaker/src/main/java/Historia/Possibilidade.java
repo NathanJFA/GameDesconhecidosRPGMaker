@@ -1,3 +1,7 @@
+package Historia;
+
+import org.junit.jupiter.api.Test;
+
 public class Possibilidade {
     private String Id;
     private String mensagem,msgOp1,msgOp2,msgOp3;
@@ -46,15 +50,6 @@ public class Possibilidade {
     }
     public void setPossibilidade1(Possibilidade possibilidade){
         this.possibilidade1 = possibilidade;
-<<<<<<< HEAD
-    }
-    public void setPossibilidade2(Possibilidade possibilidade){
-        this.possibilidade2 = possibilidade;
-    }
-    public void setPossibilidade3(Possibilidade possibilidade){
-        this.possibilidade3 = possibilidade;
-=======
->>>>>>> 7766f3ba52791fc363bf733e7b7ced79974172d6
     }
     public void setPossibilidade2(Possibilidade possibilidade){
         this.possibilidade2 = possibilidade;
@@ -63,3 +58,4 @@ public class Possibilidade {
         this.possibilidade3 = possibilidade;
     }
 }
+

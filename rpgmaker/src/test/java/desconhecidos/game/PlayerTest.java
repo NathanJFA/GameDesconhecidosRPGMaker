@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Entities.Player;
+import Historia.Possibilidade;
 
 class PlayerTest {
 
@@ -23,6 +24,14 @@ class PlayerTest {
         assertEquals(10, player1.getDestreza());
         assertEquals(0, player1.getInventario().size());
     }
+    @Test
+    public void test(){
+        Possibilidade p1 = new Possibilidade();
+        p1.setOpcao1("msg da opcao 1 do p1");
+        p1.getOpcao1().setOpcao1("msg da opcao 1 do opcao1");
 
+        System.out.println(p1.getOpcao1().getMensagem());
+        System.out.println(p1.getOpcao1().getOpcao1().getMensagem());
+    }
     
 }
