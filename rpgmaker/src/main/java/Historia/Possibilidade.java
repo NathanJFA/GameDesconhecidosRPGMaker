@@ -1,15 +1,12 @@
-package Historia;
-
-import org.junit.jupiter.api.Test;
-
 public class Possibilidade {
     private String Id;
-    private String mensagem,msgOpcao1,msgOpcao2,msgOpcao3;
-    private Possibilidade opcao1,opcao2,opcao3;
+    private String mensagem,msgOp1,msgOp2,msgOp3;
+    private Possibilidade possibilidade1, possibilidade2, possibilidade3;
 
 
     public Possibilidade(String mensagens){
         this.mensagem = mensagens;
+
     }
     public Possibilidade(){
 
@@ -19,37 +16,41 @@ public class Possibilidade {
     }
     public void setMesagem(String msg){
         this.mensagem = msg;
-    }
-    
+    } 
     public String getMsgOpcao1(){
-        return this.msgOpcao1;
+        return this.msgOp1;
     }
     public String getMsgOpcao2(){
-        return this.msgOpcao2;
+        return this.msgOp2;
     }
     public String getMsgOpcao3(){
-        return this.msgOpcao3;
+        return this.msgOp3;
     }
-
-    public Possibilidade getOpcao1(){
-        return this.opcao1;
+    public void setMsgOp1(String msg){
+        this.msgOp1 = msg;
     }
-    public Possibilidade getOpcao2(){
-        return this.opcao2;
+    public void setMsgOp2(String msg){
+        this.msgOp2 = msg;
     }
-    public Possibilidade getOpcao3(){
-        return this.opcao3;
+    public void setMsgOp3(String msg){
+        this.msgOp3 = msg;
     }
-    public void setOpcao1(String msg){
-        opcao1 = new Possibilidade(msg);
+    public Possibilidade getPossibilidade1(){
+        return possibilidade1;
     }
-    public void setOpcao2(String msg){
-        opcao2 = new Possibilidade(msg);
+    public Possibilidade getPossibilidade2(){
+        return possibilidade2;
     }
-    public void setOpcao3(String msg){
-        opcao3 = new Possibilidade(msg);
+    public Possibilidade getPossibilidade3(){
+        return possibilidade3;
     }
-
-    
-
+    public void setPossibilidade1(Possibilidade possibilidade){
+        this.possibilidade1 = possibilidade;
+    }
+    public void setPossibilidade2(Possibilidade possibilidade){
+        this.possibilidade2 = possibilidade;
+    }
+    public void setPossibilidade3(Possibilidade possibilidade){
+        this.possibilidade3 = possibilidade;
+    }
 }
