@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.BibliotecaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.BibliotecaController">
    <children>
-      <ImageView fitHeight="676.0" fitWidth="880.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="676.0" fitWidth="880.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/ceu.jpeg" />
          </image>
@@ -21,83 +23,30 @@
          </font>
       </Text>
       <Button fx:id="btnPrevious" layoutX="60.0" layoutY="58.0" mnemonicParsing="false" onAction="#previousAction" prefHeight="35.0" prefWidth="73.0" text="Voltar" />
-      <SplitPane dividerPositions="0.23317307692307693" layoutX="32.0" layoutY="228.0" prefHeight="171.0" prefWidth="834.0" style="-fx-background-color: 0000;">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: 00000;">
+      <ScrollPane layoutX="35.0" layoutY="168.0" prefHeight="460.0" prefWidth="812.0">
+         <content>
+            <VBox prefHeight="154.0" prefWidth="806.0">
                <children>
-                  <SplitPane dividerPositions="0.2994011976047904" orientation="VERTICAL" prefHeight="169.0" prefWidth="191.0" style="-fx-background-color: 00000;">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: 0000;">
-                           <children>
-                              <Text layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salvação de Tarshak" wrappingWidth="161.70703125">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="76.0" prefWidth="189.0" style="-fx-background-color: 0000;">
-                           <children>
-                              <ImageView fitHeight="130.0" fitWidth="222.0" layoutX="-16.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                  <SplitPane dividerPositions="0.5" prefHeight="150.0" prefWidth="483.0">
+                     <items>
+                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="179.0">
+                           <graphic>
+                              <ImageView fitHeight="126.0" fitWidth="172.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../img/cabana.jpeg" />
+                                    <Image url="@../img/montanhas.jpeg" />
                                  </image>
                               </ImageView>
-                              <Button layoutX="-1.0" mnemonicParsing="false" prefHeight="114.0" prefWidth="191.0" style="-fx-background-color: 0000; -fx-border-color: black;" text="Jogar">
-                                 <font>
-                                    <Font name="System Bold" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                    </items>
+                           </graphic></Button>
+                        <Text nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Apos entregarem a espada ao prefeito Orjam de Prado Verde, voces gozam de status de herois na aldeia. Voces ganharam 1 semana de estadia na estalagem e comem na casa do prefeito.&#10;Apos 2 dias de estadia, chega na cidade um comboio com 1 carroca e 1 homem. Mercadores em viagem, proucuram o prefeito se ele conhecia alguem que pudesse fazer a escolta." textAlignment="JUSTIFY" wrappingWidth="600.9999854564667">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                     </items>
                   </SplitPane>
                </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="136.0" prefWidth="114.0" style="-fx-background-color: 0000;">
-               <children>
-                  <SplitPane dividerPositions="0.919431279620853" layoutY="5.0" prefHeight="160.0" prefWidth="635.0" style="-fx-background-color: 0000;">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="215.0">
-                           <children>
-                              <Text layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apos entregarem a espada ao prefeito Orjam de Prado Verde, voces gozam de status de herois na aldeia. Voces ganharam 1 semana de estadia na estalagem e comem na casa do prefeito.&#10;Apos 2 dias de estadia, chega na cidade um comboio com 1 carroca e 1 homem. Mercadores em viagem, proucuram o prefeito se ele conhecia alguem que pudesse fazer a escolta." textAlignment="JUSTIFY" wrappingWidth="578.9999854564667">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="123.0">
-                           <children>
-                              <SplitPane dividerPositions="0.5" layoutX="-2.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="160.0" prefWidth="48.0" style="-fx-background-color: 00000;">
-                                <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                       <children>
-                                          <Button layoutX="-4.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="55.0" style="-fx-background-color: 0000; -fx-border-color: black;" text="Editar">
-                                             <font>
-                                                <Font name="System Bold" size="12.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                       <children>
-                                          <Button layoutX="-9.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="65.0" style="-fx-border-color: black; -fx-background-color: 0000;" text="Deletar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
-                                             <font>
-                                                <Font name="System Bold" size="11.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </AnchorPane>
-                                </items>
-                              </SplitPane>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+            </VBox>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

@@ -32,7 +32,7 @@ public class MainGame extends Application{
     private static Stage stage; //PALCO
 
     /**
-     * ESTUDANDO A PLATAFORMA P INTRODUZIR BANCO DE DADOS
+     * ESTUDANDO A PLATAFORMA P INTRODUZIR BANCO DE DADOS connMysql
      * connMysql bd = new connMysql();
      * /
 
@@ -50,9 +50,9 @@ public class MainGame extends Application{
     private ObservableList<Entity> entidades = FXCollections.observableArrayList();
     
     public MainGame(){
-        entidades.add(new Entity("Super Homem", 1,1,1));
+        
         /**
-         * TESTE DE CONEXÃO
+         * TESTE DE CONEXÃO CASO FOR UTILIZAR A CLASSE  connMysql
          * connMysql.getConnection();
          * JOptionPane.showMessageDialog(null, connMysql.statusConection());
         */  

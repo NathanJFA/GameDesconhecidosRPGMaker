@@ -21,15 +21,12 @@ public class Possibilidade {
     public Possibilidade(){
         this.id = "0";
     }
-
-
     public String getApontador(){
         return this.apontador;
     }
     public void setApontador(String apontador){
         this.apontador = apontador;
     }
-
     public String getId(){
         return this.id;
     }
@@ -42,7 +39,6 @@ public class Possibilidade {
     public void setDescricao(String msg){
         this.mensagem = msg;
     } 
-
     public String getMsgOpcao1(){
         return this.msgOp1;
     }
@@ -61,8 +57,6 @@ public class Possibilidade {
     public void setMsgOp3(String msg){
         this.msgOp3 = msg;
     }
-
-
     public Possibilidade getPossibilidade1(){
         return this.possibilidade1;
     }
@@ -72,7 +66,6 @@ public class Possibilidade {
     public Possibilidade getPossibilidade3(){
         return this.possibilidade3;
     }
-    
     public Possibilidade gerarPossi1(String msg){
         this.possibilidade1 = new Possibilidade(this.id+"1",msg);
         return this.possibilidade1;
@@ -82,7 +75,7 @@ public class Possibilidade {
         return this.possibilidade2;
     }
     public Possibilidade gerarPossi3(String msg){
-        this.possibilidade3 = new Possibilidade(this.id+"3",msg));
+        this.possibilidade3 = new Possibilidade(this.id+"3",msg);
         return this.possibilidade3;
     }   
     

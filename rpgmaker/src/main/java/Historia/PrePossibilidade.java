@@ -1,4 +1,4 @@
-package desconhecidos.game;
+package Historia;
 
 public class PrePossibilidade {
     private String id;
