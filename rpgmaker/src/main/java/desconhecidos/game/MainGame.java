@@ -23,18 +23,12 @@ public class MainGame extends Application{
 
     @FXML
     private Button btnCreateAdventure;
-
     @FXML
     private Button btnBiblioteca;
-
     @FXML
     private Button btnSair;
-    private static Stage stage; //PALCO
 
-    /**
-     * ESTUDANDO A PLATAFORMA P INTRODUZIR BANCO DE DADOS connMysql
-     * connMysql bd = new connMysql();
-     * /
+    private static Stage stage; //PALCO
 
     /**
      *  JANELAS QUE SERÃO REFERENCIADAS NO STAGE (PALCO) DENTRO DO SWITCH
@@ -50,21 +44,15 @@ public class MainGame extends Application{
     private ObservableList<Entity> entidades = FXCollections.observableArrayList();
     
     public MainGame(){
-        
-        /**
-         * TESTE DE CONEXÃO CASO FOR UTILIZAR A CLASSE  connMysql
-         * connMysql.getConnection();
-         * JOptionPane.showMessageDialog(null, connMysql.statusConection());
-        */  
     }
 
-    public ObservableList<Entity> getEntidades(){
-        return entidades;
-    }
-    
     public static void main(String[] args) {
         launch(args);
     }
+
+    /**
+     * TODAS AS CENAS SÃO INICIADAS AQUI, SEGUE A MESMA LÓGICA DO changeScreen()
+     */
     @Override
     public void start(Stage stageIn) throws IOException {
         stage = stageIn;
@@ -82,6 +70,18 @@ public class MainGame extends Application{
         stage.show();
     }
 
+    public ObservableList<Entity> getEntidades(){
+        return entidades;
+    }
+    
+    /**
+     * FAZ A TRANSIÇÃO DE TODAS AS TELAS
+     * TODOS OS CONTROLADORES CHAMAM ESSE METODO QUANDO FOR NECESSÁRIO TROCAR DE CENA
+     * CASO SEJA ADICIONADA ALGUMA TELA, É PRECISO IMPLANTAR AQUI TAMBÉM
+     * PODE SER PASSADO UM OBJETO
+     * @param src
+     * @param userData
+     */
     public static void changeScreen(String src, Object userData){
         switch(src){
             case "main":
@@ -101,16 +101,21 @@ public class MainGame extends Application{
                 notifyAllListeners("possibilidades", userData);
                 break;
         }
-
     }
+    //CASO NÃO QUEIRA PASSAR OBJETO
     public static void changeScreen(String src){
         changeScreen(src, null);
     }
+    //RETORNA O PALCO
     public Stage getStage(){
         return this.stage;
     }
 
-    @FXML
+    /**
+     * METODOS OBRIGATORIOS DO SCENENUILDER/FXML
+     * @param event
+     */
+    @FXML 
     void createAdventure(ActionEvent event) {
         cadastroC.setMainGame(this);
         changeScreen("cadastro");  
@@ -126,9 +131,11 @@ public class MainGame extends Application{
     }
 
     //------------------------------------------------------------------------
-
+    /**
+     * ESSE SCRIPS AVISA A TODAS OS CONTROLLERS QUANDO SEU FRAME FOR ACESSADO
+     * TEM UM MÉTODO NO CONSTRUTOR DOS CONTROLERS QUE FAZ ISSO
+     */
     private static ArrayList<OnChangeScreen> listeners = new ArrayList<OnChangeScreen>();
-
 
     public static interface OnChangeScreen{
         public void onScreenChanged(String newScreen, Object userData);
@@ -136,60 +143,11 @@ public class MainGame extends Application{
 
     public static void addOnChangeScreenListener(OnChangeScreen newListener){
         listeners.add(newListener);
-        System.out.println("chegou até aqui");
     }
     public static void notifyAllListeners(String newScreen, Object userData){
-        //System.out.println(listeners.size());
         for(OnChangeScreen l : listeners){
             l.onScreenChanged(newScreen, userData);
-
-
         }
     }
-            /*
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Telas/FrameCadastro.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene tela = new Scene(root);
-
-        stage.setScene(tela);
-        stage.show();
-        */
-
-
-    /*
-        private Stage primaryStage;
-    private BorderPane rootLayout;
-
-    @Override
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("AddressApp");
-@../img/ceu.jpe@../img/ceu.jpe'
-        initRootLayout();
-
-        showPersonOverview();
-    }
-    
-    /**
-     * Inicializa o root layout (layout base).
-     *
-    public void initRootLayout() {
-        try {
-            // Carrega o root layout do arquivo fxml.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
-            
-            // Mostra a scene (cena) contendo o root layout.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    */
-
-
 }
 

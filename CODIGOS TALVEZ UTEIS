@@ -1,0 +1,56 @@
+  /*
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Telas/FrameCadastro.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene tela = new Scene(root);
+
+        stage.setScene(tela);
+        stage.show();
+        */
+
+
+    /*
+        private Stage primaryStage;
+    private BorderPane rootLayout;
+
+    @Override
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("AddressApp");
+@../img/ceu.jpe@../img/ceu.jpe'
+        initRootLayout();
+
+        showPersonOverview();
+    }
+    
+    /**
+     * Inicializa o root layout (layout base).
+     *
+    public void initRootLayout() {
+        try {
+            // Carrega o root layout do arquivo fxml.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            
+            // Mostra a scene (cena) contendo o root layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    */
+
+
+
+            /**
+         * TESTE DE CONEXÃO CASO FOR UTILIZAR A CLASSE  connMysql
+         * connMysql.getConnection();
+         * JOptionPane.showMessageDialog(null, connMysql.statusConection());
+        */  
+
+            /**
+     * ESTUDANDO A PLATAFORMA P INTRODUZIR BANCO DE DADOS connMysql
+     * connMysql bd = new connMysql();
+     * /
