@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
@@ -24,6 +25,7 @@ public class PossibilidadesController {
     
     private static MainGame mainGame;
     Aventura newAventura;
+    @FXML   TableView possibilidadesView;
 
     @FXML
     private Button btnPrevious;

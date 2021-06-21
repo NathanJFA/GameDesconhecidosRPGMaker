@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import Entities.Player;
 import Historia.Possibilidade;
+import javafx.geometry.Pos;
 
 class PlayerTest {
 
@@ -26,21 +27,24 @@ class PlayerTest {
     }
 
     @Test
-    public void test(){
-        Possibilidade p1 = new Possibilidade("Escolha uma opcao");
-        p1.setId("0");
-        p1.setMsgOp1("1");
-        p1.setMsgOp2("2");
-        p1.setMsgOp3("3");
-
-    }
-    @Test
     public void testeFor(){
         for(int i = 0; i < 5; i++){
             System.out.println("aaa"+i);
             System.out.println(++i);
             System.out.println(i++);
         }
+    }
+    @Test
+    public void testPossi(){
+        Possibilidade p0 = new Possibilidade();
+        assertEquals(p0.getId(), "0");
+
+       
+        Possibilidade p01 = p0.gerarPossi1("E tudo isso, so pq eu tava testando ele");
+        assertEquals(p01.getId(), "01");
+
+        Possibilidade p11 = p01.gerarPossi1("Tu eh gay mano ?");
+        assertEquals(p11.getId(), "011");
     }
     
 }

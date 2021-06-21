@@ -11,11 +11,18 @@ public class Possibilidade {
 
     public Possibilidade(String mensagens){
         this.mensagem = mensagens;
+        this.id = "0";
+    }
 
+    public Possibilidade(String id,String msg){
+        this.mensagem = msg;
+        this.id = id;
     }
     public Possibilidade(){
-
+        this.id = "0";
     }
+
+
     public String getApontador(){
         return this.apontador;
     }
@@ -57,25 +64,27 @@ public class Possibilidade {
 
 
     public Possibilidade getPossibilidade1(){
-        return possibilidade1;
+        return this.possibilidade1;
     }
     public Possibilidade getPossibilidade2(){
-        return possibilidade2;
+        return this.possibilidade2;
     }
     public Possibilidade getPossibilidade3(){
-        return possibilidade3;
+        return this.possibilidade3;
     }
-    public void setPossibilidade1(){
-        this.possibilidade1 = new Possibilidade();
-    }
-    public void setPossibilidade2(){
-        this.possibilidade2 = new Possibilidade();
-    }
-    public void setPossibilidade3(){
-        this.possibilidade3 = new Possibilidade();
-    }    
     
-    
+    public Possibilidade gerarPossi1(String msg){
+        this.possibilidade1 = new Possibilidade(this.id+"1",msg);
+        return this.possibilidade1;
+    }
+    public Possibilidade gerarPossi2(String msg){
+        this.possibilidade2 = new Possibilidade(this.id+"2",msg);
+        return this.possibilidade2;
+    }
+    public Possibilidade gerarPossi3(String msg){
+        this.possibilidade3 = new Possibilidade(this.id+"3",msg));
+        return this.possibilidade3;
+    }   
     
 }
 
