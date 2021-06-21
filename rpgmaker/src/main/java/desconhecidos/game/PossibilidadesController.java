@@ -6,6 +6,7 @@ import java.util.Map;
 
 import Historia.Aventura;
 import Historia.Possibilidade;
+import Historia.PrePossibilidade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -65,7 +66,6 @@ public class PossibilidadesController {
     @FXML
     void concluirPossibilidade(ActionEvent event){
         if(!(textDescricao.getText().isEmpty() || textOp1.getText().isEmpty() || textOp2.getText().isEmpty() || textOp3.getText().isEmpty())){
-            
             if(Aventura.possibilidades.size() == 0){
                 newNodeP = new Possibilidade(textDescricao.getText());
                 newNodeP.setApontador(null);
