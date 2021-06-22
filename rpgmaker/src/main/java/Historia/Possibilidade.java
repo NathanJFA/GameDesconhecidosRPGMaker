@@ -8,18 +8,20 @@ public class Possibilidade {
     private String mensagem,msgOp1,msgOp2,msgOp3;
     private Possibilidade possibilidade1, possibilidade2, possibilidade3;
 
-
-    public Possibilidade(String mensagens){
-        this.mensagem = mensagens;
-        this.id = "0";
-    }
-
-    public Possibilidade(String id,String msg){
-        this.mensagem = msg;
-        this.id = id;
-    }
     public Possibilidade(){
-        this.id = "0";
+
+    }
+    public Possibilidade(String id, String descricao, String msgOp1, String msgOp2, String msgOp3){
+        this.id = id;
+        this.mensagem = descricao;
+        this.msgOp1 = msgOp1;
+        this.msgOp2 = msgOp2;
+        this.msgOp3 = msgOp3;
+    }
+
+    public Possibilidade(String id,String apontador){
+        this.apontador = apontador;
+        this.id = id;
     }
     public String getApontador(){
         return this.apontador;
@@ -77,7 +79,12 @@ public class Possibilidade {
     public Possibilidade gerarPossi3(String msg){
         this.possibilidade3 = new Possibilidade(this.id+"3",msg);
         return this.possibilidade3;
-    }   
-    
+    }  
+    public void setAttr(String descricao, String op1, String op2, String op3){
+        this.mensagem = descricao;
+        this.msgOp1 = op1;
+        this.msgOp2 = op2;
+        this.msgOp3 = op3;
+    } 
 }
 

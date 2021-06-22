@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import Historia.Aventura;
 import Historia.Possibilidade;
-import Historia.PrePossibilidade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,8 +15,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class PossibilidadesController {
-
-    private ArrayList<PrePossibilidade> possibilidadesPreDefinidas = new ArrayList<>();
 
     private Possibilidade newNodeP;
 
@@ -75,32 +72,27 @@ public class PossibilidadesController {
     void concluirPossibilidade(ActionEvent event){
         if(!(textDescricao.getText().isEmpty() || textOp1.getText().isEmpty() || textOp2.getText().isEmpty() || textOp3.getText().isEmpty())){
             if(Aventura.possibilidades.size() == 0){
-                newNodeP = new Possibilidade(textDescricao.getText());
+                newNodeP = new Possibilidade("0", textDescricao.getText(), textOp1.getText(), textOp2.getText(), textOp3.getText());
                 newNodeP.setApontador(null);
-                newNodeP.setMsgOp1(textOp1.getText());
-                newNodeP.setMsgOp2(textOp2.getText());
-                newNodeP.setMsgOp3(textOp3.getText());
-                newNodeP.setId("0");
+
                 Aventura.addPossibilidade(newNodeP.getId(), newNodeP);
-                possibilidadesPreDefinidas.add(new PrePossibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
-                possibilidadesPreDefinidas.add(new PrePossibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2())); 
-                possibilidadesPreDefinidas.add(new PrePossibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
+                Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
+                Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
+                Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
+                
             }else{
                 if(!tfPesquisaId.getText().isEmpty()){
-                    for(PrePossibilidade pp : possibilidadesPreDefinidas){
-                        if(pp.getId().equals(tfPesquisaId.getText())){
-                            Possibilidade newP = new Possibilidade(textDescricao.getText());
-                            newP.setApontador(pp.getAPontador());
-                            newP.setMsgOp1(textOp1.getText());
-                            newP.setMsgOp2(textOp2.getText());
-                            newP.setMsgOp3(textOp3.getText());
-                            Aventura.addPossibilidade(newP.getId(), newP);
-                            possibilidadesPreDefinidas.remove(pp);
+                    for(Possibilidade p : Aventura.possibilidades.values()){
+                        if(p.getId().equals(tfPesquisaId.getText())){
+                            if(p.getDescricao().isEmpty()){
+                                p.setAttr(textDescricao.getText(), textOp1.getText(), textOp2.getText(), textOp3.getText());
+                                Aventura.addPossibilidade(p.getId(), p);
+                            }
                         }
                     }
-                possibilidadesPreDefinidas.add(new PrePossibilidade (newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
-                possibilidadesPreDefinidas.add(new PrePossibilidade (newNodeP.getId() + "2", newNodeP.getMsgOpcao2())); 
-                possibilidadesPreDefinidas.add(new PrePossibilidade (newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
+                    Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
+                    Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
+                    Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
                 }
             }
         }else{

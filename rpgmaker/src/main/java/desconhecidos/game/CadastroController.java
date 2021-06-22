@@ -6,7 +6,6 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 import Historia.Aventura;
-import Historia.Historia;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
