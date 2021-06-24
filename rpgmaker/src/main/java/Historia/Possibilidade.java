@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class Possibilidade {
     private String apontador;
     private String id;
-    private String mensagem,msgOp1,msgOp2,msgOp3;
+    private String descricao,msgOp1,msgOp2,msgOp3;
     private Possibilidade possibilidade1, possibilidade2, possibilidade3;
 
     public Possibilidade(){
@@ -13,7 +13,7 @@ public class Possibilidade {
     }
     public Possibilidade(String id, String descricao, String msgOp1, String msgOp2, String msgOp3){
         this.id = id;
-        this.mensagem = descricao;
+        this.descricao = descricao;
         this.msgOp1 = msgOp1;
         this.msgOp2 = msgOp2;
         this.msgOp3 = msgOp3;
@@ -36,10 +36,10 @@ public class Possibilidade {
         this.id = id;
     }
     public String getDescricao(){
-        return mensagem;
+        return descricao;
     }
     public void setDescricao(String msg){
-        this.mensagem = msg;
+        this.descricao = msg;
     } 
     public String getMsgOpcao1(){
         return this.msgOp1;
@@ -81,7 +81,7 @@ public class Possibilidade {
         return this.possibilidade3;
     }  
     public void setAttr(String descricao, String op1, String op2, String op3){
-        this.mensagem = descricao;
+        this.descricao = descricao;
         this.msgOp1 = op1;
         this.msgOp2 = op2;
         this.msgOp3 = op3;

@@ -111,4 +111,14 @@ public class Aventura {
     public LinkedHashMap<String, Possibilidade> getPossibilidades(){
         return possibilidades;
     }
+    public boolean validarPossibli(Possibilidade possi){
+        for(Map.Entry<String , Possibilidade> p: possibilidades.entrySet()) {
+            if(p.getValue().equals(possi)){
+                if(p.getValue().getDescricao()!= null){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
