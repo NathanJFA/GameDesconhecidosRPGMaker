@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.GameController">
    <children>
       <ImageView fitHeight="660.0" fitWidth="1045.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -79,6 +79,6 @@
       <Button layoutX="42.0" layoutY="544.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="598.0" style="-fx-border-color: blue; -fx-opacity: 70%;" text="Button" />
       <Button layoutX="42.0" layoutY="483.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="598.0" style="-fx-border-color: yellow; -fx-opacity: 70%;" text="Button" />
       <Button layoutX="42.0" layoutY="421.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="598.0" style="-fx-border-color: red; -fx-opacity: 70%;" text="Button" />
-      <Button layoutX="735.0" layoutY="612.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="69.0" style="-fx-opacity: 90%;" text="Menu" />
+      <Button fx:id="btMenu" layoutX="735.0" layoutY="612.0" mnemonicParsing="false" onAction="#menuFrame" prefHeight="34.0" prefWidth="69.0" style="-fx-opacity: 90%;" text="Menu" />
    </children>
 </AnchorPane>
