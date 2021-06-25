@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -22,22 +23,18 @@
       </ImageView>
       <AnchorPane layoutX="42.0" layoutY="40.0" prefHeight="343.0" prefWidth="597.0">
          <children>
-            <DialogPane prefHeight="343.0" prefWidth="597.0" style="-fx-opacity: 45%;" />
+            <TextArea layoutX="1.0" layoutY="-5.0" prefHeight="359.0" prefWidth="597.0" style="-fx-opacity: 45%;" />
          </children>
       </AnchorPane>
-      <DialogPane layoutX="42.0" layoutY="426.0" prefHeight="183.0" prefWidth="597.0" style="-fx-opacity: 45%;" />
-      <Button layoutX="81.0" layoutY="447.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="519.0" style="-fx-border-color: red; -fx-opacity: 70%;" text="Button" />
-      <Button layoutX="81.0" layoutY="499.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="519.0" style="-fx-border-color: yellow; -fx-opacity: 70%;" text="Button" />
-      <Button layoutX="81.0" layoutY="551.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="519.0" style="-fx-border-color: blue; -fx-opacity: 70%;" text="Button" />
-      <AnchorPane layoutX="672.0" layoutY="37.0" prefHeight="544.0" prefWidth="194.0">
+      <AnchorPane layoutX="672.0" layoutY="37.0" prefHeight="544.0" prefWidth="194.0" style="-fx-background-color: 00000;">
          <children>
-            <DialogPane layoutX="-5.0" prefHeight="571.0" prefWidth="200.0" style="-fx-opacity: 45%;" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="568.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 45%;" width="194.0" />
             <Text layoutX="35.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atributos" textAlignment="CENTER" wrappingWidth="125.13671875">
                <font>
                   <Font name="Myanmar Text Bold" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="35.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario" textAlignment="CENTER" wrappingWidth="125.13671875">
+            <Text layoutX="29.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario" textAlignment="CENTER" wrappingWidth="125.13671875">
                <font>
                   <Font name="Myanmar Text Bold" size="24.0" />
                </font>
@@ -79,5 +76,8 @@
             </GridPane>
          </children>
       </AnchorPane>
+      <Button layoutX="42.0" layoutY="545.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="598.0" style="-fx-border-color: blue; -fx-opacity: 70%;" text="Button" />
+      <Button layoutX="42.0" layoutY="483.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="598.0" style="-fx-border-color: yellow; -fx-opacity: 70%;" text="Button" />
+      <Button layoutX="42.0" layoutY="421.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="598.0" style="-fx-border-color: red; -fx-opacity: 70%;" text="Button" />
    </children>
 </AnchorPane>
