@@ -37,6 +37,7 @@ public class MainGame extends Application{
     public static Scene mainScene; 
     public static Scene bibliotecaScene; 
     public static Scene possibilidadeScene;
+    public static Scene gameScene;
 
     CadastroController cadastroC = new CadastroController();
     BibliotecaController bibliotecaC = new BibliotecaController();
@@ -64,6 +65,8 @@ public class MainGame extends Application{
         possibilidadeScene = new Scene(fxmlPossibilidades);
         Parent fxmlBiblioteca = FXMLLoader.load(getClass().getResource("../../Telas/FrameSelecioneAventura.fxml"));
         bibliotecaScene = new Scene(fxmlBiblioteca);
+        Parent fxmlGame = FXMLLoader.load(getClass().getResource("../../Telas/FrameGame.fxml"));
+        gameScene = new Scene(fxmlGame);
 
         stage.setTitle("Game RPG Maker v1.0");
         stage.setScene(mainScene);
@@ -100,6 +103,9 @@ public class MainGame extends Application{
                 stage.setScene(possibilidadeScene);
                 notifyAllListeners("possibilidades", userData);
                 break;
+            case "game":
+                stage.setScene(gameScene);
+                notifyAllListeners("game", userData);
         }
     }
     //CASO NÃO QUEIRA PASSAR OBJETO

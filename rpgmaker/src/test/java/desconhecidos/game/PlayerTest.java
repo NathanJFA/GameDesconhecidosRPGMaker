@@ -46,5 +46,11 @@ class PlayerTest {
         Possibilidade p11 = p01.gerarPossi1("Tu eh gay mano ?");
         assertEquals(p11.getId(), "011");
     }
+    @Test
+    public void testaRetorno(){
+        int c;
+        System.out.println("valor: " +c);
+
+    }
     
 }

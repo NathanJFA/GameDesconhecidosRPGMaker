@@ -81,19 +81,15 @@ public class Aventura {
     @Override //APENAS P DEBUG
     public String toString(){
         return nome+"#"+categoriaAventura+"#"+objetivo+"#"+personagemPrincipal+"#"+ambiente+"#"+descricao;
-
     }
     public static void updateId(Possibilidade possibilidade){
         for(Map.Entry<String , Possibilidade> p: possibilidades.entrySet()) {
             if(p.getValue().getMsgOpcao1().equals(possibilidade.getApontador())) {
-                String newIdFilho = nomeiaId(p.getValue().getId(), "1");
-                possibilidade.setId(newIdFilho);
+                possibilidade.setId(nomeiaId(p.getValue().getId(), "1"));
             }else if(p.getValue().getMsgOpcao2().equals(possibilidade.getApontador())){
-                String newIdFilho = nomeiaId(p.getValue().getId(), "2");
-                possibilidade.setId(newIdFilho);
+                possibilidade.setId(nomeiaId(p.getValue().getId(), "2"));
             }else if(p.getValue().getMsgOpcao3().equals(possibilidade.getApontador())){
-                String newIdFilho = nomeiaId(p.getValue().getId(), "3");
-                possibilidade.setId(newIdFilho);
+                possibilidade.setId(nomeiaId(p.getValue().getId(), "3"));
             }
         }
     }
@@ -101,7 +97,6 @@ public class Aventura {
         String newIdFilho = idPai + op;
         return newIdFilho;
     }
-
     public static void addPossibilidade(String id, Possibilidade possiblidade){
         possibilidades.put(id,possiblidade);
     }
@@ -111,14 +106,13 @@ public class Aventura {
     public LinkedHashMap<String, Possibilidade> getPossibilidades(){
         return possibilidades;
     }
-    public boolean validarPossibli(Possibilidade possi){
+    public boolean validarPossiblidade(Possibilidade possibilidade){
         for(Map.Entry<String , Possibilidade> p: possibilidades.entrySet()) {
-            if(p.getValue().equals(possi)){
+            if(p.getValue().equals(possibilidade)){
                 if(p.getValue().getDescricao()!= null){
                     return true;
                 }
             }
-        }
-        return false;
+        }return false;
     }
 }

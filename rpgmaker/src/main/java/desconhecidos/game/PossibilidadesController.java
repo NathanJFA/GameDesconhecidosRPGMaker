@@ -79,7 +79,7 @@ public class PossibilidadesController {
                 Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
                 Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
                 Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
-                
+                nextFrame();
             }else{
                 if(!tfPesquisaId.getText().isEmpty()){
                     for(Possibilidade p : Aventura.possibilidades.values()){
@@ -87,20 +87,22 @@ public class PossibilidadesController {
                             if(p.getDescricao().isEmpty()){
                                 p.setAttr(textDescricao.getText(), textOp1.getText(), textOp2.getText(), textOp3.getText());
                                 Aventura.addPossibilidade(p.getId(), p);
+                                Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
+                                Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
+                                Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
+                                nextFrame();
                             }
                         }
                     }
-                    Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
-                    Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
-                    Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
                 }
             }
         }else{
             System.out.println("Preencher campos para continuar..");
         }
     }
-
-
+    void nextFrame(){
+        changeScreen("game");
+    }
     @FXML //ACAO DO BOTAO RETORNAR PRA TELA CADASTRO
     void previousFrame(ActionEvent event) {
         changeScreen("cadastro");
