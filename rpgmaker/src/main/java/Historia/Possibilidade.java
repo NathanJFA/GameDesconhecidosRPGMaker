@@ -2,9 +2,13 @@ package Historia;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Possibilidade {
     private String apontador;
     private String id;
+    private StringProperty idProprty;
     private String descricao,msgOp1,msgOp2,msgOp3;
     private Possibilidade possibilidade1, possibilidade2, possibilidade3;
 
@@ -13,6 +17,7 @@ public class Possibilidade {
     }
     public Possibilidade(String id, String descricao, String msgOp1, String msgOp2, String msgOp3){
         this.id = id;
+        this.idProprty = new SimpleStringProperty(id);
         this.descricao = descricao;
         this.msgOp1 = msgOp1;
         this.msgOp2 = msgOp2;
@@ -22,6 +27,8 @@ public class Possibilidade {
     public Possibilidade(String id,String apontador){
         this.apontador = apontador;
         this.id = id;
+        this.idProprty = new SimpleStringProperty(id);
+        this.descricao = "";
     }
     public String getApontador(){
         return this.apontador;
@@ -34,6 +41,12 @@ public class Possibilidade {
     }
     public void setId(String id){
         this.id = id;
+    }
+    public StringProperty getIdProperty(){
+        return this.idProprty;
+    }
+    public void setIdPorperty(String id){
+        this.idProprty = new SimpleStringProperty(id);
     }
     public String getDescricao(){
         return descricao;

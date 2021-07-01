@@ -2,14 +2,17 @@
 package desconhecidos.game;
 
 import java.util.ArrayList;
+import java.util.Map.Entry;
 
 import Historia.Aventura;
 import Historia.Possibilidade;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -38,6 +41,13 @@ public class PossibilidadesController {
     private Label labelApontador;
     @FXML
     private TextField tfPesquisaId;
+    @FXML
+    private TableView<Possibilidade> tableView;
+    private ObservableList<Possibilidade> possibiliData = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Possibilidade, String> possibiliCompleta;
+    @FXML
+    private TableColumn<Possibilidade, String> possibiliIncompleta;
 
     /**
      * ESSE MÉTODO É PADRÃO DO JAVAFX
@@ -47,6 +57,8 @@ public class PossibilidadesController {
      */
     @FXML 
     protected void initialize(){
+        possibiliCompleta.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+        possibiliIncompleta.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         MainGame.addOnChangeScreenListener(new MainGame.OnChangeScreen(){
             @Override
             public void onScreenChanged(String newScreen, Object userData){
@@ -79,7 +91,9 @@ public class PossibilidadesController {
                 Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
                 Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
                 Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
-                nextFrame();
+                atulizarTable();
+                tableView.setItems(getPossibiliData());
+               // nextFrame();
             }else{
                 if(!tfPesquisaId.getText().isEmpty()){
                     for(Possibilidade p : Aventura.possibilidades.values()){
@@ -89,8 +103,10 @@ public class PossibilidadesController {
                                 Aventura.addPossibilidade(p.getId(), p);
                                 Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
                                 Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
-                                Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
-                                nextFrame();
+                                Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));     
+                                atulizarTable();
+                                tableView.setItems(getPossibiliData());                        
+                                //nextFrame();
                             }
                         }
                     }
@@ -120,6 +136,17 @@ public class PossibilidadesController {
         //ADICIONAR NOVAS POSSIBILIDADES
     }
 
+    public void atulizarTable(){
+        for(Entry<String, Possibilidade> p: Aventura.possibilidades.entrySet()) {
+            if(p.getValue().getDescricao() != ""){
+                possibiliData.add(p.getValue());
+            }
+        }
+    }
+
+    public ObservableList<Possibilidade> getPossibiliData() {
+		return this.possibiliData;
+	}
     
 
 }
