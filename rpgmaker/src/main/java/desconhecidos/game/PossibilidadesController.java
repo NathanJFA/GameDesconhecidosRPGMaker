@@ -42,8 +42,10 @@ public class PossibilidadesController {
     @FXML
     private TextField tfPesquisaId;
     @FXML
-    private TableView<Possibilidade> tableView;
-    private ObservableList<Possibilidade> possibiliData = FXCollections.observableArrayList();
+    private TableView<Possibilidade> tableViewComple;
+    private ObservableList<Possibilidade> possibiliDataComple = FXCollections.observableArrayList();
+    private TableView<Possibilidade> tableViewIncom;
+    private ObservableList<Possibilidade> possibiliDataImcomple = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Possibilidade, String> possibiliCompleta;
     @FXML
@@ -91,9 +93,11 @@ public class PossibilidadesController {
                 Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
                 Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
                 Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
+                //A LISTA EH ATUALIZADA ANTES DE SER CHAMADA PELAS TABELAS
                 atulizarTable();
-                tableView.setItems(getPossibiliData());
-               // nextFrame();
+                tableViewComple.setItems(getPossibiliDataComple());
+                tableViewIncom.setItems(getPossibiliDataImcomple());
+                nextFrame();
             }else{
                 if(!tfPesquisaId.getText().isEmpty()){
                     for(Possibilidade p : Aventura.possibilidades.values()){
@@ -105,8 +109,9 @@ public class PossibilidadesController {
                                 Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
                                 Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));     
                                 atulizarTable();
-                                tableView.setItems(getPossibiliData());                        
-                                //nextFrame();
+                                tableViewComple.setItems(getPossibiliDataComple());   
+                                tableViewIncom.setItems(getPossibiliDataImcomple());                     
+                                nextFrame();
                             }
                         }
                     }
@@ -117,7 +122,7 @@ public class PossibilidadesController {
         }
     }
     void nextFrame(){
-        changeScreen("game");
+        changeScreen("possibilidades");
     }
     @FXML //ACAO DO BOTAO RETORNAR PRA TELA CADASTRO
     void previousFrame(ActionEvent event) {
@@ -132,21 +137,27 @@ public class PossibilidadesController {
         mainGame.changeScreen(scene);
     }
     //AQUI É A EXIBIÇÃO DAS POSSIBILIDADES NA TABELA
-    public void updateTable(){
-        //ADICIONAR NOVAS POSSIBILIDADES
-    }
 
     public void atulizarTable(){
         for(Entry<String, Possibilidade> p: Aventura.possibilidades.entrySet()) {
             if(p.getValue().getDescricao() != ""){
-                possibiliData.add(p.getValue());
+                possibiliDataComple.add(p.getValue());
+                System.out.println(possibiliDataComple.size());
+            }
+            else{
+                possibiliDataImcomple.add(p.getValue());
+                System.out.println(possibiliDataImcomple.size());
             }
         }
     }
 
-    public ObservableList<Possibilidade> getPossibiliData() {
-		return this.possibiliData;
+    public ObservableList<Possibilidade> getPossibiliDataComple() {
+		return this.possibiliDataComple;
 	}
+
+    public ObservableList<Possibilidade> getPossibiliDataImcomple(){
+        return this.possibiliDataImcomple;
+    }
     
 
 }
