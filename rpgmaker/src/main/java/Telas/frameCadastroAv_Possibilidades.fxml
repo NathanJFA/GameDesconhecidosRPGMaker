@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.PossibilidadesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.PossibilidadesController">
    <children>
       <ImageView fitHeight="729.0" fitWidth="912.0" layoutX="-7.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,8 +47,8 @@
       <TextArea fx:id="textOp1" layoutX="102.0" layoutY="316.0" prefHeight="52.0" prefWidth="394.0" />
       <TextArea fx:id="textOp2" layoutX="102.0" layoutY="397.0" prefHeight="52.0" prefWidth="394.0" />
       <TextArea fx:id="textOp3" layoutX="102.0" layoutY="479.0" prefHeight="52.0" prefWidth="394.0" />
-      <Button layoutX="299.0" layoutY="578.0" mnemonicParsing="false" onAction="#concluirPossibilidade" prefHeight="34.0" prefWidth="130.0" text="Finalizar" />
-      <Button fx:id="btnPrevious" layoutX="129.0" layoutY="578.0" mnemonicParsing="false" onAction="#previousFrame" prefHeight="34.0" prefWidth="115.0" text="Voltar (TESTE)" />
+      <Button fx:id="btnFinalizar" layoutX="339.0" layoutY="578.0" mnemonicParsing="false" onAction="#concluirPossibilidade" prefHeight="34.0" prefWidth="130.0" text="Finalizar" />
+      <Button fx:id="btnPrevious" layoutX="57.0" layoutY="578.0" mnemonicParsing="false" onAction="#previousFrame" prefHeight="34.0" prefWidth="115.0" text="Voltar (TESTE)" />
       <Label layoutX="595.0" layoutY="80.0" prefHeight="41.0" prefWidth="161.0" text="Selecione o Identificador :" />
       <AnchorPane layoutX="516.0" layoutY="142.0" prefHeight="489.0" prefWidth="173.0">
          <children>
@@ -61,13 +61,13 @@
          </children>
       </AnchorPane>
       <TextField fx:id="tfPesquisaId" layoutX="756.0" layoutY="87.0" prefHeight="25.0" prefWidth="44.0" />
-      <Button layoutX="806.0" layoutY="83.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="54.0" text="OK" />
+      <Button layoutX="806.0" layoutY="83.0" mnemonicParsing="false" onAction="#buscarPossibilidade" prefHeight="34.0" prefWidth="54.0" text="OK" />
       <Label layoutX="71.0" layoutY="140.0" prefHeight="41.0" prefWidth="105.0" text="Apontador:">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="labelApontador" layoutX="186.0" layoutY="131.0" prefHeight="59.0" prefWidth="355.0" text="correr  pra se salvar!" textFill="#070606" />
+      <Label fx:id="labelApontador" layoutX="186.0" layoutY="131.0" prefHeight="59.0" prefWidth="355.0" text="" textFill="#070606" />
       <AnchorPane layoutX="702.0" layoutY="141.0" prefHeight="489.0" prefWidth="115.0">
          <children>
             <TableView fx:id="tableViewIncom" prefHeight="489.0" prefWidth="153.0">
@@ -78,5 +78,6 @@
             <ScrollBar layoutX="139.0" orientation="VERTICAL" prefHeight="489.0" prefWidth="14.0" />
          </children>
       </AnchorPane>
+      <Button fx:id="editarPossibilidade" layoutX="207.0" layoutY="578.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="105.0" text="Editar" />
    </children>
 </AnchorPane>
