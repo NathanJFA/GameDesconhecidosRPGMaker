@@ -2,6 +2,8 @@
 package desconhecidos.game;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map.Entry;
 
 import Historia.Aventura;
@@ -227,12 +229,12 @@ public class PossibilidadesController {
         for(Entry<String, Possibilidade> p: Aventura.possibilidades.entrySet()) {
             if(p.getValue().getDescricao() != "" && !encontrarPossibilidade(p.getValue(),"possibiliDataComple")){
                 possibiliDataComple.add(p.getValue());
-                possibiliDataComple.sorted();
+                //possibiliDataComple.sort();
                 System.out.println(possibiliDataComple.size());
             }
             else if(p.getValue().getDescricao() == "" && !encontrarPossibilidade(p.getValue(),"possibiliDataIncomple")){
                 possibiliDataIncomple.add(p.getValue());
-                possibiliDataIncomple.sorted();
+                //possibiliDataIncomple.sorted();
                 System.out.println(possibiliDataIncomple.size());
             }
         //VERIFICA SE NÃO TEM ID DUPLICADO NAS DUAS TABELAS
@@ -256,7 +258,23 @@ public class PossibilidadesController {
                 return true;
             }
         }return false;
-    }
+    } 
+    /*private ObservableList<Possibilidade> selectionSort(ObservableList<Possibilidade> list){
+        for(int i = 0; i < list.size(); i++){
+            int menorId = i;
+
+            for(int j = menorId + 1; j < list.size(); j++){
+                if(Integer.parseInt(list.get(j).getId()) < Integer.parseInt(list.get(menorId).getId())){
+                    menorId = j;
+                }
+            }
+            if(menorId != i){
+                Possibilidade var = list.get(i);
+                list.set(i) = list.get(menorId);
+            }
+        }
+        return null;
+    }*/
 
     public ObservableList<Possibilidade> getPossibiliDataComple() {
 		return this.possibiliDataComple;
