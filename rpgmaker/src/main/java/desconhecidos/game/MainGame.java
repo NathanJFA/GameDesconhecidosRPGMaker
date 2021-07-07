@@ -56,6 +56,7 @@ public class MainGame extends Application{
      */
     @Override
     public void start(Stage stageIn) throws IOException {
+        Sound.Clips.music.play();
         stage = stageIn;
         Parent fxmlMain = FXMLLoader.load(getClass().getResource("../../Telas/BaseFramePrincipal.fxml"));
         mainScene = new Scene(fxmlMain); 

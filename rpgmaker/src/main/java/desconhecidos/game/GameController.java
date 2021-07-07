@@ -37,10 +37,13 @@ public class GameController {
         });
     }
 
+    
+
     @FXML
     void menuFrame(ActionEvent event) {
         MainGame.changeScreen("main");
     }
+
 
 
 }
