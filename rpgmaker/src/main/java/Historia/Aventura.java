@@ -14,12 +14,21 @@ public class Aventura {
     private String personagemPrincipal;
     private String ambiente;
     private String descricao;
-    private HashMap<Entity, String> entidades = new HashMap<>();
-    private HashMap<Item, String> itens = new HashMap<>();
+    private HashMap<String, Entity> entidades = new HashMap<>();
+    private HashMap<String, Item> itens = new HashMap<>();
     public static LinkedHashMap<String, Possibilidade> possibilidades = new LinkedHashMap<>();
 
 
-    public Aventura(){
+    public Aventura(String nome, String categoriaAventura, String objetivo, String personagemPrincipal, String ambiente, String descricao, HashMap<String, Entity> entidadesList, HashMap<String, Item> itensList, HashMap<String, Possibilidade> possibilidadesList){
+        this.nome = nome;
+        this.categoriaAventura = categoriaAventura;
+        this.objetivo = objetivo;
+        this.personagemPrincipal = personagemPrincipal;
+        this.ambiente = ambiente;
+        this.descricao = descricao;
+        this.entidades = entidadesList;
+        this.itens = itensList;
+        this.possibilidades = (LinkedHashMap<String, Possibilidade>) possibilidadesList;
     }
     public Aventura(String nome, String categoriaAventura, String objetivo, String personagemPrincipal, String ambiente, String descricao){
         this.nome = nome;
@@ -66,13 +75,13 @@ public class Aventura {
         this.descricao = descricao;
     }
 
-    public HashMap<Entity, String> getEntity(){
+    public HashMap<String, Entity> getEntity(){
         return entidades;
     }
     public void setEntity(){
 
     }
-    public HashMap<Item, String> getItem(){
+    public HashMap<String, Item> getItens(){
         return itens;
     }
     public void setItens(){

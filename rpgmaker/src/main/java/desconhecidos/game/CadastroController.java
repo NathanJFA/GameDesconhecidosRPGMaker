@@ -51,7 +51,7 @@ public class CadastroController {
 
     private Aventura newAventura;
 
-    private HashMap<String, Aventura> aventuras = new HashMap<>();
+    public static HashMap<String, Aventura> aventuras = new HashMap<>();
 
     public CadastroController(){
         

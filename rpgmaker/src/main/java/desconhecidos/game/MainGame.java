@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import Entities.Entity;
+import bd.WriteAndRead;
 import bd.connMysql;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -19,7 +20,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainGame extends Application{
-
 
     @FXML
     private Button btnCreateAdventure;
@@ -48,7 +48,16 @@ public class MainGame extends Application{
     }
 
     public static void main(String[] args) {
+        inicializaComponentes();
         launch(args);
+    }
+    static void inicializaComponentes(){
+        try {
+            WriteAndRead.recuperarDados();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**

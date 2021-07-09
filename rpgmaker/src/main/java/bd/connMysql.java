@@ -18,7 +18,7 @@ public class connMysql {
         Class.forName(driverName); 
         // Configuração da conexão com um banco de dados//
         //troque por seu ip, senha, user, etc
-        String serverName = "127.0.0.1:80";    //caminho do servidor do BD
+        String serverName = "localhost:8080";    //caminho do servidor do BD
         String mydatabase ="bdrpgmaker";        //nome do seu banco de dados
         String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
         String user = "root";        //nome de um usuário de seu BD      
