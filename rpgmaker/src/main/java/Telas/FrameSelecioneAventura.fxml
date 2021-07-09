@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.BibliotecaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desconhecidos.game.BibliotecaController">
    <children>
-      <ImageView fitHeight="667.0" fitWidth="955.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+      <ImageView fitHeight="667.0" fitWidth="955.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@../img/ceu.jpeg" />
          </image>
@@ -40,11 +40,15 @@
          </font></Button>
       <TextArea fx:id="tfExibeDescricao" layoutX="105.0" layoutY="370.0" prefHeight="168.0" prefWidth="706.0" style="-fx-background-color: #F8F8FF;" text="Digite o id na caixa de pesquisa para carregar a descriçao da aventura&#10;" />
       <TextField fx:id="tfTitulo" layoutX="705.0" layoutY="191.0" onMouseClicked="#acionaTfTitulo" prefHeight="42.0" prefWidth="106.0" text="Digite o titulo" />
-      <Button layoutX="153.0" layoutY="47.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="49.0" text="Button" />
-      <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="832.0" layoutY="14.0">
-         <image>
-            <Image url="@../img/ComSom.png" />
-         </image>
-      </ImageView>
+      <AnchorPane layoutX="792.0" layoutY="40.0" prefHeight="35.0" prefWidth="51.0">
+         <children>
+            <Button layoutX="2.0" layoutY="-6.0" mnemonicParsing="false" onMouseClicked="#mutar" opacity="0.0" prefHeight="42.0" prefWidth="40.0" text="Button" />
+            <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="9.0" layoutY="-6.0" onMouseClicked="#mutar">
+               <image>
+                  <Image url="@../img/ComSom.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

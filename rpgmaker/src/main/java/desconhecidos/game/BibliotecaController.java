@@ -97,7 +97,16 @@ public class BibliotecaController {
     void acionaTfTitulo(MouseEvent event) {
         tfTitulo.setText("");
     }
-
-
-
+    @FXML
+    void mutar(MouseEvent event) {
+        if(Sound.Clips.som){
+            Sound.Clips.music.stop();
+            System.out.println("stop");
+            //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/semSom.png"));
+        }else if(!Sound.Clips.som){
+            Sound.Clips.music.play();
+            System.out.println("play");
+            //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/ComSom.png"));
+        }    
+    }
 }

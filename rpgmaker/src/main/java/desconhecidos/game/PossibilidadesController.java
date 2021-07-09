@@ -1,6 +1,7 @@
 
 package desconhecidos.game;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,6 +9,7 @@ import java.util.Map.Entry;
 
 import Historia.Aventura;
 import Historia.Possibilidade;
+import bd.WriteAndRead;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,12 +46,16 @@ public class PossibilidadesController {
     private TextArea textOp2;
     @FXML
     private TextArea textOp3;
-    @FXML
-    private Button btnFinalizar;
+
     @FXML
     private Label labelApontador;
     @FXML
     private TextField tfPesquisaId;
+    @FXML
+    private Button btnFinalizar;
+
+    @FXML
+    private Button btnConcluirPossibilidade;
 
     @FXML
     private ImageView imageViewSom;
@@ -117,6 +123,8 @@ public class PossibilidadesController {
          * apagar tudo que estiver dentro dos textField
          * apagar a frase apontadora (label de id: labelApontador)
          */
+        btnConcluirPossibilidade.setDisable(true);
+        btnFinalizar.setDisable(false);
 
         if(!(textDescricao.getText().isEmpty() || textOp1.getText().isEmpty() || textOp2.getText().isEmpty() || textOp3.getText().isEmpty())){
             if(Aventura.possibilidades.size() == 0){
@@ -145,13 +153,16 @@ public class PossibilidadesController {
                 atualizarTable();
                 tableViewComple.setItems(getPossibiliDataComple());
                 tableViewIncom.setItems(getPossibiliDataIncomple());
+
+                btnConcluirPossibilidade.setDisable(true);
                 btnFinalizar.setDisable(true);
             }else if(!workId.isEmpty()){
                 for(Possibilidade p : Aventura.possibilidades.values()){
                     if(p.getId().equals(workId)){
                         if(p.getDescricao().isEmpty()){
                             p.setAttr(textDescricao.getText(), textOp1.getText(), textOp2.getText(), textOp3.getText());
-                            Aventura.addPossibilidade(p.getId(), p);
+                            //Aventura.addPossibilidade(p.getId(), p);
+
                             Aventura.addPossibilidade(p.getId() + "1", new Possibilidade(p.getId() + "1", p.getMsgOpcao1()));
                             Aventura.addPossibilidade(p.getId() + "2", new Possibilidade(p.getId() + "2", p.getMsgOpcao2()));
                             Aventura.addPossibilidade(p.getId() + "3", new Possibilidade(p.getId() + "3", p.getMsgOpcao3()));   
@@ -172,7 +183,10 @@ public class PossibilidadesController {
                             tableViewComple.setItems(getPossibiliDataComple());   
                             tableViewIncom.setItems(getPossibiliDataIncomple());  
                             
-                            btnFinalizar.setDisable(true);
+                           
+                            
+                        }else{
+                            System.out.println("DescricaoPreenchida");
                         }
                     }else{
                         System.out.println("ID DIGITADO NÃO EXISTE");
@@ -194,6 +208,7 @@ public class PossibilidadesController {
     void buscarPossibilidade(ActionEvent event) {
         if(!tfPesquisaId.getText().isEmpty()){
             btnFinalizar.setDisable(false);
+            btnConcluirPossibilidade.setDisable(false);
             labelApontador.setText(Aventura.possibilidades.get(tfPesquisaId.getText()).getApontador());
             workId = tfPesquisaId.getText();
 
@@ -208,21 +223,22 @@ public class PossibilidadesController {
             textOp2.setEditable(true);
             textOp3.setEditable(true);
 
+            //CASO JA EXISTA
             if(!Aventura.possibilidades.get(tfPesquisaId.getText()).getDescricao().isEmpty()){
-                btnFinalizar.setDisable(true);
                 textDescricao.setEditable(false);
                 labelApontador.setDisable(false);
                 textOp1.setEditable(false);
                 textOp2.setEditable(false);
                 textOp3.setEditable(false);
+                btnConcluirPossibilidade.setDisable(true);
+                btnFinalizar.setDisable(true);
                 textDescricao.setText(Aventura.possibilidades.get(workId).getDescricao());
-                labelApontador.setText(Aventura.possibilidades.get(workId).getApontador()); //NÃO TA PUXANDO O APONTADOR
+                labelApontador.setText(Aventura.possibilidades.get(workId).getApontador()); 
                 textOp1.setText(Aventura.possibilidades.get(workId).getMsgOpcao1());
                 textOp2.setText(Aventura.possibilidades.get(workId).getMsgOpcao2());
                 textOp3.setText(Aventura.possibilidades.get(workId).getMsgOpcao3());
-
-
             }
+            tfPesquisaId.setText("");
         }else{
             System.out.println("Algo de errado não está certo");
         }
@@ -309,6 +325,11 @@ public class PossibilidadesController {
             System.out.println("play");
             //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/ComSom.png"));
         }    
+    }@FXML
+    void finalizarAventura(ActionEvent event) throws IOException{
+        WriteAndRead.gravarDados();
+        changeScreen("biblioteca");
+
     }
 }
 

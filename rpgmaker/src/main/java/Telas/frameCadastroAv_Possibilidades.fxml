@@ -46,8 +46,8 @@
       <TextArea fx:id="textOp1" layoutX="102.0" layoutY="316.0" prefHeight="52.0" prefWidth="394.0" />
       <TextArea fx:id="textOp2" layoutX="102.0" layoutY="397.0" prefHeight="52.0" prefWidth="394.0" />
       <TextArea fx:id="textOp3" layoutX="102.0" layoutY="479.0" prefHeight="52.0" prefWidth="394.0" />
-      <Button fx:id="btnFinalizar" layoutX="339.0" layoutY="578.0" mnemonicParsing="false" onAction="#concluirPossibilidade" prefHeight="34.0" prefWidth="130.0" text="Finalizar" />
-      <Button fx:id="btnPrevious" layoutX="57.0" layoutY="578.0" mnemonicParsing="false" onAction="#previousFrame" prefHeight="34.0" prefWidth="115.0" text="Voltar (TESTE)" />
+      <Button fx:id="btnConcluirPossibilidade" layoutX="287.0" layoutY="557.0" mnemonicParsing="false" onAction="#concluirPossibilidade" prefHeight="34.0" prefWidth="153.0" text="Concluir Possibilidade" />
+      <Button fx:id="btnPrevious" layoutX="110.0" layoutY="601.0" mnemonicParsing="false" onAction="#previousFrame" prefHeight="34.0" prefWidth="153.0" text="Valor" />
       <Label layoutX="595.0" layoutY="80.0" prefHeight="41.0" prefWidth="161.0" text="Selecione o Identificador :" />
       <AnchorPane layoutX="516.0" layoutY="142.0" prefHeight="489.0" prefWidth="173.0">
          <children>
@@ -75,7 +75,10 @@
             </TableView>
          </children>
       </AnchorPane>
-      <Button fx:id="editarPossibilidade" layoutX="207.0" layoutY="578.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="105.0" text="Editar" />
+      <Button fx:id="editarPossibilidade" layoutX="110.0" layoutY="557.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="153.0" text="Editar">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
       <AnchorPane layoutX="806.0" layoutY="22.0" prefHeight="25.0" prefWidth="31.0">
          <children>
             <ImageView fx:id="imageViewSom" fitHeight="34.0" fitWidth="32.0" layoutY="5.0">
@@ -86,5 +89,6 @@
             <Button fx:id="btnSom" layoutX="-2.0" mnemonicParsing="false" onMouseClicked="#mutar" prefHeight="41.0" prefWidth="32.0" style="-fx-opacity: 0;" />
          </children>
       </AnchorPane>
+      <Button fx:id="btnFinalizar" layoutX="287.0" layoutY="601.0" mnemonicParsing="false" onAction="#finalizarAventura" prefHeight="34.0" prefWidth="153.0" text="Finalizar Aventura" />
    </children>
 </AnchorPane>

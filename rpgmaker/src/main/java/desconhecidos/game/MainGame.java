@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class MainGame extends Application{
@@ -58,6 +59,7 @@ public class MainGame extends Application{
         launch(args);
     }
     static void inicializaComponentes() throws IOException{
+        Sound.Clips.music.play();
         dados.recuperarDados();
     }
 
@@ -66,7 +68,6 @@ public class MainGame extends Application{
      */
     @Override
     public void start(Stage stageIn) throws IOException {
-        Sound.Clips.music.play();
         stage = stageIn;
         Parent fxmlMain = FXMLLoader.load(getClass().getResource("../../Telas/BaseFramePrincipal.fxml"));
         mainScene = new Scene(fxmlMain); 
@@ -143,7 +144,8 @@ public class MainGame extends Application{
         changeScreen("biblioteca");
     }
     @FXML
-    void exit(ActionEvent event) {
+    void exit(ActionEvent event) throws IOException {
+        dados.gravarDados();
         stage.close();
     }
 
@@ -165,6 +167,18 @@ public class MainGame extends Application{
         for(OnChangeScreen l : listeners){
             l.onScreenChanged(newScreen, userData);
         }
+    }
+    @FXML
+    void mutar(MouseEvent event) {
+        if(Sound.Clips.som){
+            Sound.Clips.music.stop();
+            System.out.println("stop");
+            //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/semSom.png"));
+        }else if(!Sound.Clips.som){
+            Sound.Clips.music.play();
+            System.out.println("play");
+            //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/ComSom.png"));
+        }    
     }
 }
 

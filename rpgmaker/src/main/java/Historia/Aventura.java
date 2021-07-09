@@ -32,7 +32,7 @@ public class Aventura {
         this.descricao = descricao;
         this.entidades = entidadesList;
         this.itens = itensList;
-        this.possibilidades = (LinkedHashMap<String, Possibilidade>) possibilidadesList;
+        possibilidades = (LinkedHashMap<String, Possibilidade>) possibilidadesList;
     }
     public Aventura(String nome, String categoriaAventura, String objetivo, String personagemPrincipal, String ambiente, String descricao){
         this.nome = nome;

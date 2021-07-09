@@ -28,14 +28,16 @@ public class WriteAndRead {
     public static void recuperarDados() throws IOException {
 		FileReader fileReader = new FileReader(FILE_AVENTURAS);
 		BufferedReader buffRead = new BufferedReader(fileReader);
-		String linha = buffRead.readLine();
-		while (linha != null) {
+
+		String linha;
+		while ((linha = buffRead.readLine()) != null) {
 			Aventura aventura;
 			String [] geral = linha.split("%");
 			String atributos = geral[0];
-			String entidades = geral[1];
-			String itens = geral[2];
-			String possibilidades = geral[3];
+			String possibilidades = geral[1];
+			//String entidades = geral[1];
+			//String itens = geral[2];
+			
 
 			//ATRIBUTOS
 			String [] atributosGeral = atributos.split("#");
@@ -46,27 +48,33 @@ public class WriteAndRead {
 			String ambiente = atributosGeral[4];
 			String descricao = atributosGeral[5];
 
+			HashMap<String, Entity> entidadesList = new HashMap<>();
+			/*
 			//LISTA ENTIDADES
 			String [] entidadesGeral = entidades.split("$");
-			HashMap<String, Entity> entidadesList = new HashMap<>();
+			
 			for(int i = 0; i < entidadesGeral.length; i++){
 				String [] entidade = entidadesGeral[i].split("#");
 				String nomeE = entidade[0];
 				int vida = Integer.parseInt(entidade[1]);
 				int forca = Integer.parseInt(entidade[2]);
 				int destreza = Integer.parseInt(entidade[3]);
-				entidadesList.put(nomeE, new Entity(nomeE, vida, forca, destreza));
+				//entidadesList.put(nomeE, new Entity(nomeE, vida, forca, destreza));
 			}
+			*/
 
+			HashMap<String, Item> itensList = new HashMap<String, Item>();
+			/*
 			//LISTA ITENS
 			String [] itensGeral = itens.split("$");
-			HashMap<String, Item> itensList = new HashMap<String, Item>();
+			
 			for(int i = 0; i < itensGeral.length; i++){
 				String [] item = itensGeral[i].split("#");
 				String nomeI = item[0];
-				//TALVEZ IMPLEMENTAR ALGUM ATRIBUTO
-				itensList.put(nomeI, new Item(nomeI, i, i, i, false));
+				
+				//itensList.put(nomeI, new Item(nomeI, i, i, i, false));
 			}
+			*/
 
 			//LISTA POSSIBILIDADES
 			String [] possibilidadesGeral = possibilidades.split("$");
@@ -119,13 +127,21 @@ public class WriteAndRead {
 				}
 				String stringCompostaPossibilidades = "";
 				for(Possibilidade p: a.getPossibilidades().values()){
+					if(p.getDescricao() != ""){
+						if(stringCompostaPossibilidades.length() == 0){
+							stringCompostaPossibilidades += p.getId() +"#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
+						}else{
+							stringCompostaPossibilidades += "$" + p.getId() + "#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
+						}
+					}
 					if(stringCompostaPossibilidades.length() == 0){
 						stringCompostaPossibilidades += p.getId() +"#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
 					}else{
 						stringCompostaPossibilidades += "$" + p.getId() + "#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
 					}
 				}
-                String stringCompostaGeral = stringCompostaAtributos+"%"+stringCompostaEntidades+"%"+stringCompostaItens+"%"+stringCompostaPossibilidades;
+                //String stringCompostaGeral = stringCompostaAtributos+"%"+stringCompostaEntidades+"%"+stringCompostaItens+"%"+stringCompostaPossibilidades;
+				String stringCompostaGeral = stringCompostaAtributos+"%"+stringCompostaPossibilidades;
                 bufferedWriter.write(stringCompostaGeral);
                 bufferedWriter.newLine();
             }
