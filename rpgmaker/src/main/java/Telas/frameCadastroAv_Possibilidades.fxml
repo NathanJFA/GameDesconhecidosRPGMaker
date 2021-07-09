@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -57,7 +56,6 @@
                 <TableColumn fx:id="possibiliCompleta" prefWidth="199.0" text="Possibilidades Completas" />
               </columns>
             </TableView>
-            <ScrollBar layoutX="159.0" orientation="VERTICAL" prefHeight="489.0" prefWidth="14.0" />
          </children>
       </AnchorPane>
       <TextField fx:id="tfPesquisaId" layoutX="756.0" layoutY="87.0" prefHeight="25.0" prefWidth="44.0" />
@@ -75,7 +73,6 @@
                 <TableColumn fx:id="possibiliIncompleta" prefWidth="152.0" text="Possibilidade Incompletas" />
               </columns>
             </TableView>
-            <ScrollBar layoutX="139.0" orientation="VERTICAL" prefHeight="489.0" prefWidth="14.0" />
          </children>
       </AnchorPane>
       <Button fx:id="editarPossibilidade" layoutX="207.0" layoutY="578.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="105.0" text="Editar" />

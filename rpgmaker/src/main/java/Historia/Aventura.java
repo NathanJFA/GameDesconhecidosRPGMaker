@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 import Entities.Entity;
 import Entities.Item;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Aventura {
     private String nome;
@@ -40,6 +44,9 @@ public class Aventura {
     }
     public String getNome(){
         return this.nome;
+    }
+    public StringProperty getNomeProperty(){
+        return new SimpleStringProperty(nome);
     }
     public String getCategoriaAventura(){
         return this.categoriaAventura;

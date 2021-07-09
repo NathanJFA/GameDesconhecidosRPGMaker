@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
@@ -25,7 +26,8 @@ public class WriteAndRead {
 	public static CadastroController sistemaCadastro = new CadastroController();
    
     public static void recuperarDados() throws IOException {
-		BufferedReader buffRead = new BufferedReader(new FileReader(FILE_AVENTURAS));
+		FileReader fileReader = new FileReader(FILE_AVENTURAS);
+		BufferedReader buffRead = new BufferedReader(fileReader);
 		String linha = buffRead.readLine();
 		while (linha != null) {
 			Aventura aventura;

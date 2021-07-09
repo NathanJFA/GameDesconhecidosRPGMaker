@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 public class MainGame extends Application{
 
+    static WriteAndRead dados = new WriteAndRead();
     @FXML
     private Button btnCreateAdventure;
     @FXML
@@ -48,16 +49,16 @@ public class MainGame extends Application{
     }
 
     public static void main(String[] args) {
-        inicializaComponentes();
-        launch(args);
-    }
-    static void inicializaComponentes(){
         try {
-            WriteAndRead.recuperarDados();
+            inicializaComponentes();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        launch(args);
+    }
+    static void inicializaComponentes() throws IOException{
+        dados.recuperarDados();
     }
 
     /**
