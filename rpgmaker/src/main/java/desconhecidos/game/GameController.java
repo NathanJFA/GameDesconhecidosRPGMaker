@@ -1,6 +1,7 @@
 package desconhecidos.game;
 
 import Historia.Aventura;
+import Historia.Possibilidade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 public class GameController {
+
+    BibliotecaController bibliotecaController = new BibliotecaController();
+
+    Aventura aventura;
+
+    Possibilidade workPossibilidade;
+
     protected Aventura newAventura;
 
     @FXML
@@ -41,16 +49,42 @@ public class GameController {
         MainGame.addOnChangeScreenListener(new MainGame.OnChangeScreen(){
             @Override
             public void onScreenChanged(String newScreen, Object userData){
-                if(newScreen.equals("possibilidades")){
-                    System.out.println("Entrando no Frame Possibilidades...");
+                if(newScreen.equals("game")){
+                    System.out.println("Entrando no Frame Game...");
                     //AQUI DEVE SER IMPLEMENTADO A INTERAÇÃO COM A NOVA TELA 
-                    newAventura = (Aventura) userData; 
+                    aventura = (Aventura) userData;
+                    updadeFrame("");
                 }
             }
         });
     }
 
     
+    void updadeFrame(String id){
+        workPossibilidade = aventura.getPossibilidades().get("0"+id);
+        telaDescricao.setText(aventura.getPossibilidades().get("0"+id).getDescricao());
+        opcao1.setText(aventura.getPossibilidades().get("0"+id).getMsgOpcao1());
+        opcao2.setText(aventura.getPossibilidades().get("0"+id).getMsgOpcao2());
+        opcao3.setText(aventura.getPossibilidades().get("0"+id).getMsgOpcao3());
+    }
+
+    @FXML
+    void clickOp1(ActionEvent event) {
+        String id = "1";
+        updadeFrame(id);
+    }
+
+    @FXML
+    void clickOp2(ActionEvent event) {
+        String id = "2";
+        updadeFrame(id);
+    }
+
+    @FXML
+    void clickOp3(ActionEvent event) {
+        String id = "3";
+        updadeFrame(id);
+    }
 
     @FXML
     void menuFrame(ActionEvent event) {
@@ -68,8 +102,5 @@ public class GameController {
             //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/ComSom.png"));
         }    
     }
-
-    
-
 
 }
