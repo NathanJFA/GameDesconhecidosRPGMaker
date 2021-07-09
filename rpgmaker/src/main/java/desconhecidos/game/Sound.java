@@ -6,6 +6,7 @@ import java.io.*;
 public class Sound {
 	
 	public static class Clips{
+		public static Boolean som;
 		public Clip[] clips;
 		private int p;
 		private int count;
@@ -23,11 +24,16 @@ public class Sound {
 				clips[i].open(AudioSystem.getAudioInputStream(new ByteArrayInputStream(buffer)));
 			}
 		}
+		public void stop(){
+			clips[p].stop();
+			som = false;
+		}
 		
 		public void play() {
 			if(clips == null) {
 				return;
 			}
+			som = true;
 			clips[p].stop();
 			clips[p].setFramePosition(0);
 			clips[p].start();

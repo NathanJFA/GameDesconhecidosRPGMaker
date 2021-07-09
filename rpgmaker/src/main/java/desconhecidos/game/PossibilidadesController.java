@@ -18,10 +18,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class PossibilidadesController {
 
     private Possibilidade newNodeP;
+
+    
 
     private static MainGame mainGame;
 
@@ -45,6 +50,12 @@ public class PossibilidadesController {
     private Label labelApontador;
     @FXML
     private TextField tfPesquisaId;
+
+    @FXML
+    private ImageView imageViewSom;
+
+    @FXML
+    private Button btnSom;
     @FXML
     private TableView<Possibilidade> tableViewComple;
     private ObservableList<Possibilidade> possibiliDataComple = FXCollections.observableArrayList();
@@ -287,8 +298,18 @@ public class PossibilidadesController {
     void editarPossibilidade(ActionEvent event) {
 
     }
-    
-
+    @FXML
+    void mutar(MouseEvent event) {
+        if(Sound.Clips.som){
+            Sound.Clips.music.stop();
+            System.out.println("stop");
+            //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/semSom.png"));
+        }else if(!Sound.Clips.som){
+            Sound.Clips.music.play();
+            System.out.println("play");
+            //imageViewSom.setImage(new Image("/home/nathanjfa/Documentos/ProjetosGitHub/GameDesconhecidosRPGMaker/rpgmaker/src/main/java/img/ComSom.png"));
+        }    
+    }
 }
 
 
