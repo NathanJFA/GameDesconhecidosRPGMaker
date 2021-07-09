@@ -20,7 +20,7 @@ public class Aventura {
     private String descricao;
     private HashMap<String, Entity> entidades = new HashMap<>();
     private HashMap<String, Item> itens = new HashMap<>();
-    public static LinkedHashMap<String, Possibilidade> possibilidades = new LinkedHashMap<>();
+    private HashMap<String, Possibilidade> possibilidades = new HashMap<>();
 
 
     public Aventura(String nome, String categoriaAventura, String objetivo, String personagemPrincipal, String ambiente, String descricao, HashMap<String, Entity> entidadesList, HashMap<String, Item> itensList, HashMap<String, Possibilidade> possibilidadesList){
@@ -32,7 +32,7 @@ public class Aventura {
         this.descricao = descricao;
         this.entidades = entidadesList;
         this.itens = itensList;
-        possibilidades = (LinkedHashMap<String, Possibilidade>) possibilidadesList;
+        possibilidades = possibilidadesList;
     }
     public Aventura(String nome, String categoriaAventura, String objetivo, String personagemPrincipal, String ambiente, String descricao){
         this.nome = nome;
@@ -53,6 +53,9 @@ public class Aventura {
     }
     public String getObjetivo(){
         return this.objetivo;
+    }
+    public void setPossibilidades(HashMap<String, Possibilidade> possibilidadesHash){
+        this.possibilidades = possibilidadesHash;
     }
     public String getPersonagemPrincipal(){
         return this.personagemPrincipal;
@@ -98,8 +101,8 @@ public class Aventura {
     public String toString(){
         return nome+"#"+categoriaAventura+"#"+objetivo+"#"+personagemPrincipal+"#"+ambiente+"#"+descricao;
     }
-    public static void updateId(Possibilidade possibilidade){
-        for(Map.Entry<String , Possibilidade> p: possibilidades.entrySet()) {
+    public void updateId(Possibilidade possibilidade){
+        for(Map.Entry<String , Possibilidade> p: this.possibilidades.entrySet()) {
             if(p.getValue().getMsgOpcao1().equals(possibilidade.getApontador())) {
                 possibilidade.setId(nomeiaId(p.getValue().getId(), "1"));
             }else if(p.getValue().getMsgOpcao2().equals(possibilidade.getApontador())){
@@ -113,13 +116,13 @@ public class Aventura {
         String newIdFilho = idPai + op;
         return newIdFilho;
     }
-    public static void addPossibilidade(String id, Possibilidade possiblidade){
-        possibilidades.put(id,possiblidade);
+    public void addPossibilidade(String id, Possibilidade p){
+        this.possibilidades.put(id,p);
     }
-    public void removerPossibilidade(Possibilidade possibilidade){
-        possibilidades.remove(possibilidade);
+    public void removerPossibilidade(Possibilidade p){
+        this.possibilidades.remove(p);
     }
-    public LinkedHashMap<String, Possibilidade> getPossibilidades(){
+    public HashMap<String, Possibilidade> getPossibilidades(){
         return possibilidades;
     }
     public boolean validarPossiblidade(Possibilidade possibilidade){

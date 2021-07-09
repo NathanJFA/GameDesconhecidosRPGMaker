@@ -1,8 +1,11 @@
 package desconhecidos.game;
 
+import java.util.ArrayList;
+
 import Historia.Aventura;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +18,8 @@ import javafx.scene.input.MouseEvent;
 public class BibliotecaController {
 
     CadastroController sistemaCadastro = new CadastroController();
+
+    Aventura workAventura;
 
     private static MainGame mainGame;
     
@@ -40,6 +45,7 @@ public class BibliotecaController {
     private TextField tfTitulo;
 
     ObservableList<Aventura> aventuras = FXCollections.observableArrayList();
+    ArrayList<Aventura> aventuras2 = new ArrayList<>();
     
     @FXML
     void buscaAventura(ActionEvent event) {
@@ -47,6 +53,7 @@ public class BibliotecaController {
         if(!tfTitulo.getText().isEmpty()){
             for(Aventura a: aventuras){
                 if(a.getNome().equals(tfTitulo.getText())){
+                    workAventura = a;
                     aventuraTemporaria.add(a);
                 }
             }
@@ -59,6 +66,9 @@ public class BibliotecaController {
     void previousAction(ActionEvent event) {
         changeScreen("main");
     }
+    public void changeScreen(String scene){
+        mainGame.changeScreen(scene);
+    } 
     @FXML 
     protected void initialize(){
         for(Aventura a: sistemaCadastro.aventuras.values()){
@@ -70,6 +80,11 @@ public class BibliotecaController {
             public void onScreenChanged(String newScreen, Object userData){
                 if(newScreen.equals("biblioteca")){
                     System.out.println("Entrando no Frame biblioteca...");
+                    ArrayList<Aventura> temp = new ArrayList<>();
+                    for(Aventura a: temp){
+                        aventuras.add(a);
+                    }
+                   
                     tableAventuras.setItems(aventuras);
                     inicializeComponentes();
                     
@@ -80,8 +95,8 @@ public class BibliotecaController {
     public void setMainGame(MainGame mainGame){
         this.mainGame = mainGame;
     }
-    public void changeScreen(String scene){
-        mainGame.changeScreen(scene);
+    public void changeScreen(String scene, Object obj){
+        mainGame.changeScreen(scene, workAventura);
     }    
     void inicializeComponentes(){
         String textoPadrao = "Digite o titulo na caixa de pesquisa para carregar a descriçao da aventura";
@@ -91,7 +106,9 @@ public class BibliotecaController {
     }
     @FXML
     void confirmar(ActionEvent event){
-        //PASSAR PRA OUTRA TELA (GAME)
+        if(!tfTitulo.getText().isEmpty()){
+            changeScreen("game", workAventura);
+        }
     }
     @FXML
     void acionaTfTitulo(MouseEvent event) {

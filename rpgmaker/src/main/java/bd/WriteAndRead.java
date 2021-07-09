@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 public class WriteAndRead {
 
 	static File FILE_AVENTURAS = new File("aventuras.txt");
+	static PossibilidadesController sistemaPossibilidade = new PossibilidadesController();
 
 	public static CadastroController sistemaCadastro = new CadastroController();
    
@@ -95,7 +96,7 @@ public class WriteAndRead {
 		buffRead.close();
 	}
 
-	public static void gravarDados() throws IOException {
+	public void gravarDados() throws IOException {
 		FileWriter fileWriter = new FileWriter(FILE_AVENTURAS);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 		/**
@@ -108,6 +109,7 @@ public class WriteAndRead {
 
 				String stringCompostaAtributos = a.getNome() +"#"+a.getCategoriaAventura()+"#"+a.getObjetivo()+"#"+a.getPersonagemPrincipal()+"#"+a.getAmbiente()+"#"+a.getDescricao();
 				
+				/*
 				String stringCompostaEntidades = "";
 				for(Entity e: a.getEntity().values()){
 					if(stringCompostaEntidades.length() == 0){
@@ -125,19 +127,15 @@ public class WriteAndRead {
 					}
 					//+"@"+ i.get() +"@"+ i.getForca() +"@"+ i.getDestreza()
 				}
+				*/
 				String stringCompostaPossibilidades = "";
 				for(Possibilidade p: a.getPossibilidades().values()){
-					if(p.getDescricao() != ""){
+					if(p.getDescricao() != "" && !sistemaPossibilidade.encontrarPossibilidade(p, "possibiliDataComple")){
 						if(stringCompostaPossibilidades.length() == 0){
 							stringCompostaPossibilidades += p.getId() +"#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
 						}else{
 							stringCompostaPossibilidades += "$" + p.getId() + "#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
 						}
-					}
-					if(stringCompostaPossibilidades.length() == 0){
-						stringCompostaPossibilidades += p.getId() +"#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
-					}else{
-						stringCompostaPossibilidades += "$" + p.getId() + "#"+ p.getDescricao() +"#"+ p.getMsgOpcao1() +"#"+ p.getMsgOpcao2()+"#"+ p.getMsgOpcao3();
 					}
 				}
                 //String stringCompostaGeral = stringCompostaAtributos+"%"+stringCompostaEntidades+"%"+stringCompostaItens+"%"+stringCompostaPossibilidades;
@@ -150,5 +148,6 @@ public class WriteAndRead {
 		}
 		bufferedWriter.flush();
 		fileWriter.close();
+		
 	}
 }

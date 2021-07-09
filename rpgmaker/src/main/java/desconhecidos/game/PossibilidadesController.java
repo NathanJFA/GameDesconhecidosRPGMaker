@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+
+import javax.swing.JOptionPane;
 
 import Historia.Aventura;
 import Historia.Possibilidade;
@@ -28,6 +32,8 @@ public class PossibilidadesController {
 
     private Possibilidade newNodeP;
 
+    static WriteAndRead dados = new WriteAndRead();
+    static CadastroController sistemaCadastro = new CadastroController();
     
 
     private static MainGame mainGame;
@@ -69,6 +75,8 @@ public class PossibilidadesController {
     private TableView<Possibilidade> tableViewIncom;
     private ObservableList<Possibilidade> possibiliDataIncomple = FXCollections.observableArrayList();
 
+    HashMap<String, Possibilidade> possibilidadesHash = new HashMap<>();
+
     /*
     @FXML
     private TableView<?> tableViewIncom;
@@ -100,10 +108,11 @@ public class PossibilidadesController {
             @Override
             public void onScreenChanged(String newScreen, Object userData){
                 if(newScreen.equals("possibilidades")){
-                    tfPesquisaId.setText("");
                     System.out.println("Entrando no Frame Possibilidades...");
-                    //AQUI DEVE SER IMPLEMENTADO A INTERAÇÃO COM A NOVA TELA 
                     newAventura = (Aventura) userData; 
+                    possibilidadesHash = newAventura.getPossibilidades();
+                    //AQUI DEVE SER IMPLEMENTADO A INTERAÇÃO COM A NOVA TELA 
+                    
                 }
             }
         });
@@ -119,6 +128,7 @@ public class PossibilidadesController {
      */
     @FXML
     void concluirPossibilidade(ActionEvent event){
+        tfPesquisaId.setText("");
         /**
          * apagar tudo que estiver dentro dos textField
          * apagar a frase apontadora (label de id: labelApontador)
@@ -127,15 +137,15 @@ public class PossibilidadesController {
         btnFinalizar.setDisable(false);
 
         if(!(textDescricao.getText().isEmpty() || textOp1.getText().isEmpty() || textOp2.getText().isEmpty() || textOp3.getText().isEmpty())){
-            if(Aventura.possibilidades.size() == 0){
+            if(possibilidadesHash.size() == 0){
                 //PRIMEIRA POSSIBILIDADE
                 newNodeP = new Possibilidade("0", textDescricao.getText(), textOp1.getText(), textOp2.getText(), textOp3.getText());
                 newNodeP.setApontador(null);
 
-                Aventura.addPossibilidade(newNodeP.getId(), newNodeP);
-                Aventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
-                Aventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
-                Aventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
+                newAventura.addPossibilidade(newNodeP.getId(), newNodeP);
+                newAventura.addPossibilidade(newNodeP.getId() + "1", new Possibilidade(newNodeP.getId() + "1", newNodeP.getMsgOpcao1()));
+                newAventura.addPossibilidade(newNodeP.getId() + "2", new Possibilidade(newNodeP.getId() + "2", newNodeP.getMsgOpcao2()));
+                newAventura.addPossibilidade(newNodeP.getId() + "3", new Possibilidade(newNodeP.getId() + "3", newNodeP.getMsgOpcao3()));
 
                 textDescricao.setText("");
                 labelApontador.setText("");
@@ -150,55 +160,58 @@ public class PossibilidadesController {
                 textOp3.setEditable(false);
 
                 //A LISTA EH ATUALIZADA ANTES DE SER CHAMADA PELAS TABELAS
-                atualizarTable();
+                
                 tableViewComple.setItems(getPossibiliDataComple());
                 tableViewIncom.setItems(getPossibiliDataIncomple());
+                atualizarTable();
 
+                
                 btnConcluirPossibilidade.setDisable(true);
                 btnFinalizar.setDisable(true);
             }else if(!workId.isEmpty()){
-                for(Possibilidade p : Aventura.possibilidades.values()){
-                    if(p.getId().equals(workId)){
-                        if(p.getDescricao().isEmpty()){
-                            p.setAttr(textDescricao.getText(), textOp1.getText(), textOp2.getText(), textOp3.getText());
+                
+                
+                JOptionPane.showMessageDialog(null,"tamanho do hash: "+possibilidadesHash.size());
+                for(String p: possibilidadesHash.keySet()) {
+                    JOptionPane.showMessageDialog(null,"conteudo do hash: "+possibilidadesHash.get(p).getId() +" "+ possibilidadesHash.get(p).getId() +" "+ possibilidadesHash.get(p).getDescricao() +" "+ possibilidadesHash.get(p).getApontador() +" "+ "wordID" + workId);
+                    if(possibilidadesHash.get(p).getId().equals(workId)){
+                        
+                        if(possibilidadesHash.get(p).getDescricao().isEmpty()){
+                            
+                            possibilidadesHash.get(p).setAttr(textDescricao.getText(), textOp1.getText(), textOp2.getText(), textOp3.getText());
                             //Aventura.addPossibilidade(p.getId(), p);
-
-                            Aventura.addPossibilidade(p.getId() + "1", new Possibilidade(p.getId() + "1", p.getMsgOpcao1()));
-                            Aventura.addPossibilidade(p.getId() + "2", new Possibilidade(p.getId() + "2", p.getMsgOpcao2()));
-                            Aventura.addPossibilidade(p.getId() + "3", new Possibilidade(p.getId() + "3", p.getMsgOpcao3()));   
+                            
+                            newAventura.addPossibilidade(possibilidadesHash.get(p).getId() + "1", new Possibilidade(possibilidadesHash.get(p).getId() + "1", possibilidadesHash.get(p).getMsgOpcao1()));
+                            newAventura.addPossibilidade(possibilidadesHash.get(p).getId() + "2", new Possibilidade(possibilidadesHash.get(p).getId() + "2", possibilidadesHash.get(p).getMsgOpcao2()));
+                            newAventura.addPossibilidade(possibilidadesHash.get(p).getId() + "3", new Possibilidade(possibilidadesHash.get(p).getId() + "3", possibilidadesHash.get(p).getMsgOpcao3()));   
                             
                             textDescricao.setEditable(false);
                             labelApontador.setDisable(false);
                             textOp1.setEditable(false);
                             textOp2.setEditable(false);
                             textOp3.setEditable(false);
-    
+                            
                             textDescricao.setText("");
                             labelApontador.setText("");
                             textOp1.setText("");
                             textOp2.setText("");
                             textOp3.setText("");
-    
+                            
                             atualizarTable();
                             tableViewComple.setItems(getPossibiliDataComple());   
                             tableViewIncom.setItems(getPossibiliDataIncomple());  
                             
-                           
                             
-                        }else{
-                            System.out.println("DescricaoPreenchida");
+                            btnConcluirPossibilidade.setDisable(true);
+                            btnFinalizar.setDisable(false);
+                            
                         }
-                    }else{
-                        System.out.println("ID DIGITADO NÃO EXISTE");
                     }
                 }
             }
         }else{
             System.out.println("Preencher campos para continuar..");
         }
-    }
-    void nextFrame(){
-        changeScreen("possibilidades");
     }
     @FXML //ACAO DO BOTAO RETORNAR PRA TELA CADASTRO
     void previousFrame(ActionEvent event) {
@@ -207,11 +220,12 @@ public class PossibilidadesController {
     @FXML
     void buscarPossibilidade(ActionEvent event) {
         if(!tfPesquisaId.getText().isEmpty()){
-            btnFinalizar.setDisable(false);
-            btnConcluirPossibilidade.setDisable(false);
-            labelApontador.setText(Aventura.possibilidades.get(tfPesquisaId.getText()).getApontador());
             workId = tfPesquisaId.getText();
 
+            btnFinalizar.setDisable(false);
+            btnConcluirPossibilidade.setDisable(false);
+            labelApontador.setText(possibilidadesHash.get(tfPesquisaId.getText()).getApontador());
+            
             textDescricao.setText("");
             textOp1.setText("");
             textOp2.setText("");
@@ -224,7 +238,7 @@ public class PossibilidadesController {
             textOp3.setEditable(true);
 
             //CASO JA EXISTA
-            if(!Aventura.possibilidades.get(tfPesquisaId.getText()).getDescricao().isEmpty()){
+            if(!possibilidadesHash.get(tfPesquisaId.getText()).getDescricao().isEmpty()){
                 textDescricao.setEditable(false);
                 labelApontador.setDisable(false);
                 textOp1.setEditable(false);
@@ -232,13 +246,13 @@ public class PossibilidadesController {
                 textOp3.setEditable(false);
                 btnConcluirPossibilidade.setDisable(true);
                 btnFinalizar.setDisable(true);
-                textDescricao.setText(Aventura.possibilidades.get(workId).getDescricao());
-                labelApontador.setText(Aventura.possibilidades.get(workId).getApontador()); 
-                textOp1.setText(Aventura.possibilidades.get(workId).getMsgOpcao1());
-                textOp2.setText(Aventura.possibilidades.get(workId).getMsgOpcao2());
-                textOp3.setText(Aventura.possibilidades.get(workId).getMsgOpcao3());
+                textDescricao.setText(possibilidadesHash.get(workId).getDescricao());
+                labelApontador.setText(possibilidadesHash.get(workId).getApontador()); 
+                textOp1.setText(possibilidadesHash.get(workId).getMsgOpcao1());
+                textOp2.setText(possibilidadesHash.get(workId).getMsgOpcao2());
+                textOp3.setText(possibilidadesHash.get(workId).getMsgOpcao3());
             }
-            tfPesquisaId.setText("");
+            
         }else{
             System.out.println("Algo de errado não está certo");
         }
@@ -251,29 +265,30 @@ public class PossibilidadesController {
     private void changeScreen(String scene){
         mainGame.changeScreen(scene);
     }
+    private void changeScreen(String scene, Object obj){
+        if(obj == null){
+            changeScreen(scene);
+        }else{
+            MainGame.changeScreen(scene, obj);
+        }
+    }
     //AQUI É A EXIBIÇÃO DAS POSSIBILIDADES NA TABELA
     public void atualizarTable(){
-        for(Entry<String, Possibilidade> p: Aventura.possibilidades.entrySet()) {
+        for(Entry<String, Possibilidade> p: possibilidadesHash.entrySet()) {
             if(p.getValue().getDescricao() != "" && !encontrarPossibilidade(p.getValue(),"possibiliDataComple")){
                 possibiliDataComple.add(p.getValue());
+                possibiliDataIncomple.remove(p.getValue());
                 //possibiliDataComple.sort();
-                System.out.println(possibiliDataComple.size());
+                //System.out.println(possibilidadeComple.size());
             }
             else if(p.getValue().getDescricao() == "" && !encontrarPossibilidade(p.getValue(),"possibiliDataIncomple")){
                 possibiliDataIncomple.add(p.getValue());
                 //possibiliDataIncomple.sorted();
-                System.out.println(possibiliDataIncomple.size());
-            }
-        //VERIFICA SE NÃO TEM ID DUPLICADO NAS DUAS TABELAS
-        }for(Possibilidade p: possibiliDataComple){
-            for(Possibilidade r: possibiliDataIncomple){
-                if(p.getId().equals(r.getId())){
-                    possibiliDataIncomple.remove(r);
-                }
+                //System.out.println(possibiliDataIncomple.size());
             }
         }
     }
-    private boolean encontrarPossibilidade(Possibilidade p, String nomeDaLista){
+    public boolean encontrarPossibilidade(Possibilidade p, String nomeDaLista){
         ObservableList<Possibilidade> list = null;
         if(nomeDaLista.equals("possibiliDataComple")){
             list = possibiliDataComple;
@@ -327,8 +342,11 @@ public class PossibilidadesController {
         }    
     }@FXML
     void finalizarAventura(ActionEvent event) throws IOException{
-        WriteAndRead.gravarDados();
-        changeScreen("biblioteca");
+        newAventura.setPossibilidades(possibilidadesHash);
+        sistemaCadastro.aventuras.put(newAventura.getNome(), newAventura);
+        
+        dados.gravarDados();
+        changeScreen("biblioteca", sistemaCadastro.aventuras);
 
     }
 }

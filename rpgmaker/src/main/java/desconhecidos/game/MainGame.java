@@ -21,7 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class MainGame extends Application{
-
+    CadastroController sistemaCadastro = new CadastroController();
     static WriteAndRead dados = new WriteAndRead();
     @FXML
     private Button btnCreateAdventure;
@@ -44,7 +44,6 @@ public class MainGame extends Application{
     CadastroController cadastroC = new CadastroController();
     BibliotecaController bibliotecaC = new BibliotecaController();
     
-    private ObservableList<Entity> entidades = FXCollections.observableArrayList();
     
     public MainGame(){
     }
@@ -85,9 +84,6 @@ public class MainGame extends Application{
         stage.show();
     }
 
-    public ObservableList<Entity> getEntidades(){
-        return entidades;
-    }
     
     /**
      * FAZ A TRANSIÇÃO DE TODAS AS TELAS
@@ -141,7 +137,7 @@ public class MainGame extends Application{
     @FXML
     void bibliotecaGames(ActionEvent event) {
         bibliotecaC.setMainGame(this);
-        changeScreen("biblioteca");
+        changeScreen("biblioteca", CadastroController.aventuras);
     }
     @FXML
     void exit(ActionEvent event) throws IOException {

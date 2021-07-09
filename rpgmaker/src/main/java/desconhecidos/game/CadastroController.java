@@ -94,7 +94,14 @@ public class CadastroController {
         if(!(textNameAdventure.getText().isEmpty() || textCategorAdventure.getText().isEmpty() || textObjetive.getText().isEmpty() || textPersonMain.getText().isEmpty() || textAmbiente.getText().isEmpty() || textCLimax.getText().isEmpty() || textDescription.getText().isEmpty())){
             newAventura = new Aventura(textNameAdventure.getText(), textCategorAdventure.getText(), textObjetive.getText(), textPersonMain.getText(), textAmbiente.getText(), textDescription.getText());
             this.aventuras.put(newAventura.getNome(), newAventura);
-            System.out.println(newAventura.toString());
+            textAmbiente.setText("");
+            textNameAdventure.setText("");
+            textCategorAdventure.setText("");
+            textObjetive.setText("");
+            textPersonMain.setText("");
+            textCLimax.setText("");
+            textDescription.setText("");
+
             changeScreen("possibilidades", newAventura);
         }else{
             System.out.println("Algo precisa ser revisado...");
