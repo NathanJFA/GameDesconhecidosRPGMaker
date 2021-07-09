@@ -4,12 +4,24 @@ import Historia.Aventura;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
 
 public class GameController {
     protected Aventura newAventura;
+
     @FXML
     private TextArea telaDescricao;
+
+    @FXML
+    private TableView<?> tableAtributos;
+
+    @FXML
+    private GridPane gridInventario;
+
+    @FXML
+    private GridPane gridHabilidades;
 
     @FXML
     private Button opcao3;
@@ -44,6 +56,7 @@ public class GameController {
         MainGame.changeScreen("main");
     }
 
+    
 
 
 }

@@ -39,13 +39,13 @@
                   <Font name="Myanmar Text Bold" size="24.0" />
                </font>
             </Text>
-            <TableView layoutX="22.0" layoutY="44.0" prefHeight="145.0" prefWidth="151.0">
+            <TableView fx:id="tableAtributos" layoutX="22.0" layoutY="44.0" prefHeight="145.0" prefWidth="151.0">
               <columns>
                 <TableColumn prefWidth="76.0" text="C1" />
                 <TableColumn prefWidth="74.0" text="C2" />
               </columns>
             </TableView>
-            <GridPane gridLinesVisible="true" layoutX="20.0" layoutY="234.0" prefHeight="145.0" prefWidth="151.0">
+            <GridPane fx:id="gridInventario" gridLinesVisible="true" layoutX="20.0" layoutY="234.0" prefHeight="145.0" prefWidth="151.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -63,7 +63,7 @@
                   <Font name="Myanmar Text Bold" size="24.0" />
                </font>
             </Text>
-            <GridPane gridLinesVisible="true" layoutX="20.0" layoutY="433.0" prefHeight="115.0" prefWidth="151.0">
+            <GridPane fx:id="gridHabilidades" gridLinesVisible="true" layoutX="20.0" layoutY="433.0" prefHeight="115.0" prefWidth="151.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
